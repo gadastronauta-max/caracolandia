@@ -13,28 +13,37 @@
     background: #ffffff;
     color: #222;
     min-height: 100vh;
+    position: relative;
   }
 
-  /* ===== FUNDOS SAZONAIS ===== */
-  body.fundo-halloween {
-    background-image: url("https://img.magnific.com/fotos-gratis/fundo-de-halloween-do-grunge_1048-8873.jpg?semt=ais_hybrid&w=740&q=80");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-  }
+  /* ===== FUNDOS SAZONAIS (via ::before, não bloqueia cliques) ===== */
+  body.fundo-halloween,
   body.fundo-natal {
-    background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20201123/pngtree-red-christmas-promotion-poster-background-image_498246.jpg");
+    background: transparent;
+  }
+  body.fundo-halloween::before,
+  body.fundo-natal::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     background-repeat: no-repeat;
+    pointer-events: none;
   }
-  /* Deixa o conteúdo legível sobre os fundos */
+  body.fundo-halloween::before {
+    background-image: url("https://img.magnific.com/fotos-gratis/fundo-de-halloween-do-grunge_1048-8873.jpg?semt=ais_hybrid&w=740&q=80");
+  }
+  body.fundo-natal::before {
+    background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20201123/pngtree-red-christmas-promotion-poster-background-image_498246.jpg");
+  }
+
+  /* Header e telas transparentes no modo sazonal */
   body.fundo-halloween header,
   body.fundo-natal header {
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(4px);
+    background: transparent;
+    border-bottom-color: rgba(255,255,255,0.35);
   }
   body.fundo-halloween #login,
   body.fundo-natal #login,
@@ -42,11 +51,8 @@
   body.fundo-natal #editScreen,
   body.fundo-halloween #app,
   body.fundo-natal #app {
-    background: rgba(255,255,255,0.93);
-    border-radius: 16px;
-    padding: 16px;
-    margin: 16px auto;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    background: transparent;
+    box-shadow: none;
   }
 
   header {
@@ -62,7 +68,7 @@
     top: 0;
     z-index: 10;
   }
-  .screen { display: none; padding: 16px; }
+  .screen { display: none; padding: 16px; position: relative; z-index: 1; }
   .screen.active { display: block; }
 
   /* ===== LOGIN ===== */
@@ -89,6 +95,8 @@
     font-weight: 700;
     cursor: pointer;
     margin-top: 8px;
+    position: relative;
+    z-index: 5;
   }
   .btn-primary:active { opacity: .85; }
   .btn-secondary {
@@ -106,6 +114,8 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    position: relative;
+    z-index: 5;
   }
   .btn-secondary:active { background: #f4f4f4; }
   .btn-secondary img {
@@ -125,6 +135,8 @@
     font-weight: 600;
     cursor: pointer;
     margin-top: 10px;
+    position: relative;
+    z-index: 5;
   }
   .hint { font-size: .78rem; color: #999; margin-top: 4px; }
 
@@ -136,6 +148,8 @@
     border: 1px solid #eee;
     border-radius: 12px;
     background: #fafafa;
+    position: relative;
+    z-index: 5;
   }
   .photo-panel.show { display: block; }
   .photo-panel p { margin: 0 0 10px; font-size: .85rem; color: #666; }
@@ -183,6 +197,7 @@
     font-size: .8rem;
     color: #666;
     cursor: pointer;
+    z-index: 20;
   }
 
   /* ===== ABAS ===== */
@@ -192,6 +207,8 @@
     -webkit-overflow-scrolling: touch;
     border-bottom: 1px solid #eee;
     scrollbar-width: none;
+    position: relative;
+    z-index: 5;
   }
   .tabs-wrapper::-webkit-scrollbar { display: none; }
   .tabs {
@@ -215,7 +232,7 @@
   }
   .tab-btn.active { color: #2b7cff; }
 
-  .tab-content { display: none; padding: 18px 8px 40px; }
+  .tab-content { display: none; padding: 18px 8px 40px; position: relative; z-index: 1; }
   .tab-content.active { display: block; }
 
   /* Comparação */
@@ -499,7 +516,6 @@ function aplicarFundoSazonal() {
 }
 
 aplicarFundoSazonal();
-// Reavalia a cada minuto, para o caso de o app ficar aberto na virada do dia
 setInterval(aplicarFundoSazonal, 60000);
 
 /* ================= IMAGENS ================= */
