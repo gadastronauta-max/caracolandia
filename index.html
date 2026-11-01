@@ -7,19 +7,12 @@
 <title>Caracolândia</title>
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  body {
-    margin: 0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    background: #ffffff;
-    color: #222;
-    min-height: 100vh;
-    position: relative;
-  }
 
-  /* ===== FUNDOS SAZONAIS (via ::before, não bloqueia cliques) ===== */
+  /* ===== FUNDOS SAZONAIS (MODO NATAL OU HALLOWEEN: LETRAS BRANCAS) ===== */
   body.fundo-halloween,
   body.fundo-natal {
     background: transparent;
+    color: #ffffff;
   }
   body.fundo-halloween::before,
   body.fundo-natal::before {
@@ -44,6 +37,8 @@
   body.fundo-natal header {
     background: transparent;
     border-bottom-color: rgba(255,255,255,0.35);
+    color: #ffffff !important;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.85);
   }
   body.fundo-halloween #login,
   body.fundo-natal #login,
@@ -53,6 +48,124 @@
   body.fundo-natal #app {
     background: transparent;
     box-shadow: none;
+    color: #ffffff;
+  }
+
+  /* Todas as letras, títulos e textos brancos no modo Halloween ou Natal */
+  body.fundo-halloween h2, body.fundo-natal h2,
+  body.fundo-halloween h3, body.fundo-natal h3,
+  body.fundo-halloween p, body.fundo-natal p,
+  body.fundo-halloween span, body.fundo-natal span,
+  body.fundo-halloween strong, body.fundo-natal strong,
+  body.fundo-halloween em, body.fundo-natal em,
+  body.fundo-halloween label, body.fundo-natal label,
+  body.fundo-halloween .field label, body.fundo-natal .field label,
+  body.fundo-halloween .hint, body.fundo-natal .hint,
+  body.fundo-halloween .user-box .uname, body.fundo-natal .user-box .uname,
+  body.fundo-halloween .user-box .upass, body.fundo-natal .user-box .upass,
+  body.fundo-halloween .compare-card h3, body.fundo-natal .compare-card h3,
+  body.fundo-halloween .compare-card.african h3, body.fundo-natal .compare-card.african h3,
+  body.fundo-halloween .compare-card.native h3, body.fundo-natal .compare-card.native h3,
+  body.fundo-halloween .compare-card p, body.fundo-natal .compare-card p,
+  body.fundo-halloween .big-text, body.fundo-natal .big-text,
+  body.fundo-halloween .big-text h3, body.fundo-natal .big-text h3,
+  body.fundo-halloween .big-text p, body.fundo-natal .big-text p,
+  body.fundo-halloween .big-text strong, body.fundo-natal .big-text strong,
+  body.fundo-halloween .disease-block h3, body.fundo-natal .disease-block h3,
+  body.fundo-halloween .disease-block p, body.fundo-natal .disease-block p,
+  body.fundo-halloween .photo-panel p, body.fundo-natal .photo-panel p,
+  body.fundo-halloween .note, body.fundo-natal .note,
+  body.fundo-halloween .tab-content, body.fundo-natal .tab-content {
+    color: #ffffff !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.85);
+  }
+
+  /* Campos de texto nos modos sazonais */
+  body.fundo-halloween .field input[type="text"],
+  body.fundo-halloween .field input[type="password"],
+  body.fundo-natal .field input[type="text"],
+  body.fundo-natal .field input[type="password"] {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  }
+  body.fundo-halloween .field input::placeholder,
+  body.fundo-natal .field input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Botões e controles nos modos sazonais */
+  body.fundo-halloween .btn-secondary,
+  body.fundo-natal .btn-secondary {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.45);
+    color: #ffffff !important;
+    backdrop-filter: blur(4px);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  }
+  body.fundo-halloween .btn-secondary:active,
+  body.fundo-natal .btn-secondary:active {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  body.fundo-halloween .btn-danger,
+  body.fundo-natal .btn-danger {
+    background: rgba(176, 0, 32, 0.45);
+    border-color: rgba(255, 120, 120, 0.6);
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  }
+  body.fundo-halloween .edit-btn,
+  body.fundo-natal .edit-btn {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.65);
+    background: rgba(0, 0, 0, 0.35);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  }
+
+  /* Abas nos modos sazonais */
+  body.fundo-halloween .tabs-wrapper,
+  body.fundo-natal .tabs-wrapper,
+  body.fundo-halloween .user-box,
+  body.fundo-natal .user-box {
+    border-bottom-color: rgba(255, 255, 255, 0.35);
+  }
+  body.fundo-halloween .tab-btn,
+  body.fundo-natal .tab-btn {
+    color: rgba(255, 255, 255, 0.75) !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  }
+  body.fundo-halloween .tab-btn.active,
+  body.fundo-natal .tab-btn.active {
+    color: #ffffff !important;
+    border-bottom-color: #ffffff;
+    font-weight: 700;
+  }
+
+  /* Painel de fotos nos modos sazonais */
+  body.fundo-halloween .photo-panel,
+  body.fundo-natal .photo-panel {
+    background: rgba(0, 0, 0, 0.7);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  /* Passos de lavar as mãos nos modos sazonais */
+  body.fundo-halloween .wash-steps li,
+  body.fundo-natal .wash-steps li {
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  }
+
+  /* ===== MODO NORMAL (FUNDO BRANCO, LETRAS PRETAS) ===== */
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: #ffffff;
+    color: #000000;
+    min-height: 100vh;
+    position: relative;
   }
 
   header {
@@ -61,28 +174,31 @@
     font-size: 1.6rem;
     font-weight: 800;
     letter-spacing: 1px;
-    color: #1a1a1a;
-    border-bottom: 1px solid #eee;
-    background: #fff;
+    color: #000000;
+    border-bottom: 1px solid #e0e0e0;
+    background: #ffffff;
     position: sticky;
     top: 0;
     z-index: 10;
   }
-  .screen { display: none; padding: 16px; position: relative; z-index: 1; }
+  .screen { display: none; padding: 16px; position: relative; z-index: 1; color: #000000; }
   .screen.active { display: block; }
 
   /* ===== LOGIN ===== */
-  #login { max-width: 420px; margin: 0 auto; }
+  #login { max-width: 420px; margin: 0 auto; color: #000000; }
   .field { margin-bottom: 14px; }
-  .field label { display: block; font-size: .85rem; color: #666; margin-bottom: 6px; }
+  .field label { display: block; font-size: .85rem; color: #000000; margin-bottom: 6px; font-weight: 600; }
   .field input[type="text"], .field input[type="password"] {
     width: 100%;
     padding: 12px 14px;
-    border: 1px solid #ddd;
+    border: 1px solid #cccccc;
     border-radius: 10px;
     font-size: 1rem;
     outline: none;
+    background: #ffffff;
+    color: #000000;
   }
+  .field input::placeholder { color: #555555; }
   .field input:focus { border-color: #2b7cff; }
   .btn-primary {
     width: 100%;
@@ -90,7 +206,7 @@
     border: none;
     border-radius: 12px;
     background: #2b7cff;
-    color: #fff;
+    color: #ffffff;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -102,10 +218,10 @@
   .btn-secondary {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid #cccccc;
     border-radius: 12px;
-    background: #fff;
-    color: #333;
+    background: #ffffff;
+    color: #000000;
     font-size: .95rem;
     font-weight: 600;
     cursor: pointer;
@@ -117,7 +233,7 @@
     position: relative;
     z-index: 5;
   }
-  .btn-secondary:active { background: #f4f4f4; }
+  .btn-secondary:active { background: #f2f2f2; }
   .btn-secondary img {
     width: 32px; height: 32px;
     border-radius: 50%;
@@ -129,7 +245,7 @@
     padding: 12px;
     border: 1px solid #e5b4b4;
     border-radius: 12px;
-    background: #fff;
+    background: #ffffff;
     color: #b00020;
     font-size: .95rem;
     font-weight: 600;
@@ -138,21 +254,21 @@
     position: relative;
     z-index: 5;
   }
-  .hint { font-size: .78rem; color: #999; margin-top: 4px; }
+  .hint { font-size: .78rem; color: #000000; opacity: 0.8; margin-top: 4px; }
 
   /* ===== PAINEL DE FOTOS ===== */
   .photo-panel {
     display: none;
     margin-top: 10px;
     padding: 12px;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
     border-radius: 12px;
     background: #fafafa;
     position: relative;
     z-index: 5;
   }
   .photo-panel.show { display: block; }
-  .photo-panel p { margin: 0 0 10px; font-size: .85rem; color: #666; }
+  .photo-panel p { margin: 0 0 10px; font-size: .85rem; color: #000000; }
   .photo-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -170,7 +286,9 @@
   .photo-grid img.selected { border-color: #2b7cff; }
 
   /* ===== APP / INÍCIO ===== */
-  #app { max-width: 900px; margin: 0 auto; }
+  #app { max-width: 900px; margin: 0 auto; color: #000000; }
+  #editScreen { color: #000000; }
+  #editScreen h2 { color: #000000; }
   .user-box {
     text-align: center;
     padding: 18px 12px;
@@ -185,17 +303,17 @@
     margin: 0 auto 8px;
     background: #eee;
   }
-  .user-box .uname { font-weight: 700; font-size: 1.1rem; }
-  .user-box .upass { color: #888; font-size: .85rem; }
+  .user-box .uname { font-weight: 700; font-size: 1.1rem; color: #000000; }
+  .user-box .upass { color: #000000; opacity: 0.75; font-size: .85rem; }
   .edit-btn {
     position: absolute;
     top: 14px; right: 14px;
-    background: none;
-    border: 1px solid #ddd;
+    background: #ffffff;
+    border: 1px solid #888888;
     border-radius: 20px;
     padding: 6px 12px;
     font-size: .8rem;
-    color: #666;
+    color: #000000;
     cursor: pointer;
     z-index: 20;
   }
@@ -224,15 +342,22 @@
     border: none;
     font-size: .95rem;
     font-weight: 600;
-    color: #888;
+    color: #000000;
+    opacity: 0.65;
     padding: 8px 12px;
     cursor: pointer;
     white-space: nowrap;
     flex-shrink: 0;
+    border-bottom: 2px solid transparent;
   }
-  .tab-btn.active { color: #2b7cff; }
+  .tab-btn.active {
+    color: #000000;
+    opacity: 1;
+    border-bottom: 2px solid #000000;
+    font-weight: 700;
+  }
 
-  .tab-content { display: none; padding: 18px 8px 40px; position: relative; z-index: 1; }
+  .tab-content { display: none; padding: 18px 8px 40px; position: relative; z-index: 1; color: #000000; }
   .tab-content.active { display: block; }
 
   /* Comparação */
@@ -249,16 +374,18 @@
     aspect-ratio: 1/1;
     object-fit: cover;
   }
-  .compare-card h3 { font-size: 1rem; margin: 8px 0 6px; text-align: center; }
-  .compare-card p { font-size: .88rem; line-height: 1.45; color: #333; }
-  .compare-card.african h3 { color: #7a3b00; }
-  .compare-card.native h3 { color: #2b7cff; }
-  .big-text { font-size: .95rem; line-height: 1.6; color: #222; }
-  .big-text h3 { margin-top: 18px; }
+  .compare-card h3 { font-size: 1rem; margin: 8px 0 6px; text-align: center; color: #000000; }
+  .compare-card p { font-size: .88rem; line-height: 1.45; color: #000000; }
+  .compare-card.african h3 { color: #000000; }
+  .compare-card.native h3 { color: #000000; }
+  .big-text { font-size: .95rem; line-height: 1.6; color: #000000; }
+  .big-text h3 { margin-top: 18px; color: #000000; }
+  .big-text p { color: #000000; }
+  .big-text strong { color: #000000; }
 
   /* Doenças */
-  .disease-block h3 { color: #b00020; margin-bottom: 6px; }
-  .disease-block p { line-height: 1.6; font-size: .95rem; }
+  .disease-block h3 { color: #000000; margin-bottom: 6px; }
+  .disease-block p { line-height: 1.6; font-size: .95rem; color: #000000; }
 
   /* Galeria */
   .gallery {
@@ -325,10 +452,11 @@
     position: relative;
     padding: 10px 10px 10px 44px;
     margin-bottom: 8px;
-    background: #f8f9fb;
+    background: #f4f5f8;
     border-radius: 10px;
     font-size: .92rem;
     line-height: 1.45;
+    color: #000000;
   }
   .wash-steps li::before {
     content: counter(step);
@@ -343,7 +471,7 @@
     font-weight: 700;
     display: flex; align-items: center; justify-content: center;
   }
-  .note { font-size: .85rem; color: #666; margin-top: 8px; }
+  .note { font-size: .85rem; color: #000000; opacity: 0.8; margin-top: 8px; }
 </style>
 </head>
 <body>
@@ -498,12 +626,28 @@
 <script>
 /* ================= FUNDOS SAZONAIS ================= */
 function aplicarFundoSazonal() {
+  var params = new URLSearchParams(window.location.search);
+  var modoParam = (params.get('modo') || params.get('tema') || '').toLowerCase();
+
   var agora = new Date();
   var mes = agora.getMonth() + 1; // 1 = janeiro ... 12 = dezembro
   var dia = agora.getDate();
   var body = document.body;
 
   body.classList.remove('fundo-halloween', 'fundo-natal');
+
+  // Permite forçar via URL (?modo=halloween, ?modo=natal, ?modo=normal) para facilitar testes
+  if (modoParam === 'halloween') {
+    body.classList.add('fundo-halloween');
+    return;
+  }
+  if (modoParam === 'natal') {
+    body.classList.add('fundo-natal');
+    return;
+  }
+  if (modoParam === 'normal') {
+    return;
+  }
 
   // Halloween: 29, 30 e 31 de outubro
   if (mes === 10 && dia >= 29 && dia <= 31) {
