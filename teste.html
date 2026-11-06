@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#ffffff">
+<title>Caracolândia</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: #ffffff;
+    color: #222;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* ===== FUNDOS SAZONAIS (via ::before, não bloqueia cliques) ===== */
+  body.fundo-halloween,
+  body.fundo-natal {
+    background: transparent;
+  }
+  body.fundo-halloween::before,
+  body.fundo-natal::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  body.fundo-halloween::before {
+    background-image: url("https://img.magnific.com/fotos-gratis/fundo-de-halloween-do-grunge_1048-8873.jpg?semt=ais_hybrid&w=740&q=80");
+  }
+  body.fundo-natal::before {
+    background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20201123/pngtree-red-christmas-promotion-poster-background-image_498246.jpg");
+  }
+
+  /* Header e telas transparentes no modo sazonal */
+  body.fundo-halloween header,
+  body.fundo-natal header {
+    background: transparent;
+    border-bottom-color: rgba(255,255,255,0.35);
+  }
+  body.fundo-halloween #login,
+  body.fundo-natal #login,
+  body.fundo-halloween #editScreen,
+  body.fundo-natal #editScreen,
+  body.fundo-halloween #app,
+  body.fundo-natal #app {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  header {
+    text-align: center;
+    padding: 18px 12px 10px;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #1a1a1a;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .screen { display: none; padding: 16px; position: relative; z-index: 1; }
+  .screen.active { display: block; }
+
+  /* ===== LOGIN ===== */
+  #login { max-width: 420px; margin: 0 auto; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: .85rem; color: #666; margin-bottom: 6px; }
+  .field input[type="text"], .field input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+  }
+  .field input:focus { border-color: #2b7cff; }
+  .btn-primary {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #2b7cff;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    position: relative;
+    z-index: 5;
+  }
+  .btn-primary:active { opacity: .85; }
+  .btn-secondary {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+    color: #333;
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    z-index: 5;
+  }
+  .btn-secondary:active { background: #f4f4f4; }
+  .btn-secondary img {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #eee;
+  }
+  .btn-danger {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5b4b4;
+    border-radius: 12px;
+    background: #fff;
+    color: #b00020;
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    position: relative;
+    z-index: 5;
+  }
+  .hint { font-size: .78rem; color: #999; margin-top: 4px; }
+
+  /* ===== PAINEL DE FOTOS ===== */
+  .photo-panel {
+    display: none;
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    background: #fafafa;
+    position: relative;
+    z-index: 5;
+  }
+  .photo-panel.show { display: block; }
+  .photo-panel p { margin: 0 0 10px; font-size: .85rem; color: #666; }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .photo-grid img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    cursor: pointer;
+    background: #eee;
+  }
+  .photo-grid img.selected { border-color: #2b7cff; }
+
+  /* ===== APP / INÍCIO ===== */
+  #app { max-width: 900px; margin: 0 auto; }
+  .user-box {
+    text-align: center;
+    padding: 18px 12px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+  }
+  .user-box img {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 8px;
+    background: #eee;
+  }
+  .user-box .uname { font-weight: 700; font-size: 1.1rem; }
+  .user-box .upass { color: #888; font-size: .85rem; }
+  .edit-btn {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: .8rem;
+    color: #666;
+    cursor: pointer;
+    z-index: 20;
+  }
+
+  /* ===== ABAS ===== */
+  .tabs-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    border-bottom: 1px solid #eee;
+    scrollbar-width: none;
+    position: relative;
+    z-index: 5;
+  }
+  .tabs-wrapper::-webkit-scrollbar { display: none; }
+  .tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding: 14px 12px;
+    width: max-content;
+    min-width: 100%;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    font-size: .95rem;
+    font-weight: 600;
+    color: #888;
+    padding: 8px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .tab-btn.active { color: #2b7cff; }
+
+  .tab-content { display: none; padding: 18px 8px 40px; position: relative; z-index: 1; }
+  .tab-content.active { display: block; }
+
+  /* Comparação */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .compare-card img {
+    width: 100%;
+    border-radius: 12px;
+    background: #f4f4f4;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+  .compare-card h3 { font-size: 1rem; margin: 8px 0 6px; text-align: center; }
+  .compare-card p { font-size: .88rem; line-height: 1.45; color: #333; }
+  .compare-card.african h3 { color: #7a3b00; }
+  .compare-card.native h3 { color: #2b7cff; }
+  .big-text { font-size: .95rem; line-height: 1.6; color: #222; }
+  .big-text h3 { margin-top: 18px; }
+
+  /* Doenças */
+  .disease-block h3 { color: #b00020; margin-bottom: 6px; }
+  .disease-block p { line-height: 1.6; font-size: .95rem; }
+
+  /* Galeria */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .gallery img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #f4f4f4;
+  }
+
+  /* Lightbox */
+  #lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 100;
+    overflow: hidden;
+    touch-action: none;
+  }
+  #lightbox.show { display: block; }
+  #lightbox .lb-back {
+    position: absolute;
+    top: 14px; left: 14px;
+    z-index: 102;
+    background: rgba(255,255,255,.9);
+    border: none;
+    border-radius: 50%;
+    width: 44px; height: 44px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #222;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #lightbox .lb-img-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  #lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    transform-origin: center center;
+    transition: transform .05s linear;
+    user-select: none;
+    -webkit-user-drag: none;
+    cursor: grab;
+  }
+
+  /* Tutorial lavar mãos */
+  .wash-steps { counter-reset: step; list-style: none; padding: 0; }
+  .wash-steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 10px 10px 10px 44px;
+    margin-bottom: 8px;
+    background: #f8f9fb;
+    border-radius: 10px;
+    font-size: .92rem;
+    line-height: 1.45;
+  }
+  .wash-steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 10px; top: 50%;
+    transform: translateY(-50%);
+    width: 24px; height: 24px;
+    background: #2b7cff;
+    color: #fff;
+    border-radius: 50%;
+    font-size: .8rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .note { font-size: .85rem; color: #666; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<header>Caracolândia</header>
+
+<!-- ===== TELA LOGIN ===== -->
+<section id="login" class="screen active">
+  <div class="field">
+    <label>Nome</label>
+    <input type="text" id="inputName" placeholder="Seu nome" maxlength="30">
+  </div>
+  <div class="field">
+    <label>Senha</label>
+    <input type="password" id="inputPass" placeholder="Sua senha">
+  </div>
+
+  <button class="btn-secondary" id="btnAvatarLogin">
+    <img id="avatarPreviewLogin" src="" alt="">
+    <span id="avatarLabelLogin">Escolher foto de perfil</span>
+  </button>
+
+  <div class="photo-panel" id="panelLogin">
+    <p>Toque em um caracol para escolher:</p>
+    <div class="photo-grid" id="gridLogin"></div>
+  </div>
+
+  <button class="btn-primary" id="btnEnter" style="margin-top:18px;">Entrar</button>
+</section>
+
+<!-- ===== TELA EDITAR CONTA ===== -->
+<section id="editScreen" class="screen">
+  <div style="max-width:420px;margin:0 auto;">
+    <h2 style="text-align:center;font-size:1.2rem;">Editar conta</h2>
+    <div class="field">
+      <label>Nome</label>
+      <input type="text" id="editName" placeholder="Seu nome" maxlength="30">
+    </div>
+    <div class="field">
+      <label>Nova senha (opcional)</label>
+      <input type="password" id="editPass" placeholder="Deixe em branco para manter a atual">
+      <div class="hint">Sua senha atual não é exibida por segurança. Preencha apenas se quiser trocá-la.</div>
+    </div>
+
+    <button class="btn-secondary" id="btnAvatarEdit">
+      <img id="avatarPreviewEdit" src="" alt="">
+      <span id="avatarLabelEdit">Escolher foto de perfil</span>
+    </button>
+
+    <div class="photo-panel" id="panelEdit">
+      <p>Toque em um caracol para escolher:</p>
+      <div class="photo-grid" id="gridEdit"></div>
+    </div>
+
+    <button class="btn-primary" id="btnSaveEdit" style="margin-top:18px;">Salvar alterações</button>
+    <button class="btn-secondary" id="btnCancelEdit">Cancelar</button>
+    <button class="btn-danger" id="btnLogout">Sair da conta</button>
+  </div>
+</section>
+
+<!-- ===== TELA APP ===== -->
+<section id="app" class="screen">
+  <div class="user-box">
+    <img id="profileImg" src="" alt="Foto de perfil">
+    <div class="uname" id="profileName">—</div>
+    <div class="upass" id="profilePass">Conta protegida</div>
+    <button class="edit-btn" id="btnEdit">Editar</button>
+  </div>
+
+  <div class="tabs-wrapper">
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="dif">Diferença dos caracóis</button>
+      <button class="tab-btn" data-tab="doenca">Doenças dos caracóis</button>
+      <button class="tab-btn" data-tab="fotos">Ver fotos de caracóis</button>
+      <button class="tab-btn" data-tab="pegar">Como pegar caracóis</button>
+    </nav>
+  </div>
+
+  <div class="tab-content active" id="tab-dif">
+    <div class="compare-grid">
+      <div class="compare-card native">
+        <img id="imgNative" src="" alt="Caracol nativo">
+        <h3>Caracol nativo (Brasil)</h3>
+        <p>É menor, geralmente de 3 a 7 cm, com carapaça marrom-clara, borda lisa e arredondada. Costuma viver em ambientes úmidos e é menos agressivo ao ecossistema.</p>
+      </div>
+      <div class="compare-card african">
+        <img id="imgAfrican" src="" alt="Caracol africano">
+        <h3>Caracol africano</h3>
+        <p>É mais escuro e maior, de 10 a 20 cm. A carapaça é lisa, com borda afiada e muito escura. Alguns exemplares podem ser meio brancos. A borda afiada pode cortar a pele.</p>
+      </div>
+    </div>
+
+    <div class="big-text">
+      <h3>Principais diferenças</h3>
+      <p><strong>Tamanho:</strong> o nativo é pequeno (3–7 cm); o africano é grande (10–20 cm).</p>
+      <p><strong>Cor:</strong> o nativo tem tons mais claros; o africano é mais escuro, podendo ter exemplares meio brancos.</p>
+      <p><strong>Carapaça:</strong> a do nativo é arredondada e de borda lisa; a do africano é lisa, mas com borda afiada e muito escura — pode cortar.</p>
+      <p><strong>Risco:</strong> o africano é uma espécie invasora e pode transmitir doenças; o nativo faz parte do equilíbrio local.</p>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-doenca">
+    <div class="big-text disease-block">
+      <h3>Doenças transmitidas pelo caracol africano</h3>
+      <p>O caracol africano (Achatina fulica) pode ser hospedeiro de parasitas como o <em>Angiostrongylus cantonensis</em>, causador de meningite eosinofílica, e de bactérias como <em>Salmonella</em>. O contato com a mucosidade ou a ingestão de alimentos contaminados aumenta o risco.</p>
+
+      <h3>Doenças e riscos do caracol nativo</h3>
+      <p>O caracol nativo do Brasil tem menor potencial de transmissão de doenças graves ao ser humano, mas ainda assim pode carregar parasitas e bactérias. O risco existe, porém é considerado menor em comparação ao africano.</p>
+
+      <h3>Chances de contaminação</h3>
+      <p>A chance de contaminação aumenta quando há contato direto com o caracol sem lavar as mãos, consumo de verduras contaminadas ou manipulação sem proteção. Por isso, sempre lave bem as mãos e os alimentos.</p>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-fotos">
+    <div class="gallery" id="gallery"></div>
+    <p class="note">Toque em uma foto para abrir em tela cheia. Use os gestos de pinça para zoom e arraste para mover.</p>
+  </div>
+
+  <div class="tab-content" id="tab-pegar">
+    <div class="big-text">
+      <h3>Como pegar um caracol com segurança</h3>
+      <p>1. Molhe bem as mãos com água limpa e pura da torneira.</p>
+      <p>2. Coloque a mão na frente do caracol e espere até ele subir, sem pressa e sem ritmo — se você apressar, ele pode ficar com raiva ou com medo.</p>
+      <p>3. Quando pegar o caracol, coloque-o de volta no lugar de onde ele estava.</p>
+      <p>4. Depois, lave muito bem as mãos — muito bem mesmo.</p>
+    </div>
+
+    <h3 style="margin-top:24px;">Tutorial completo: como lavar bem as mãos</h3>
+    <ol class="wash-steps">
+      <li>Molhe as mãos com água limpa corrente.</li>
+      <li>Aplique sabão suficiente para cobrir toda a superfície das mãos.</li>
+      <li>Esfregue as palmas das mãos entre si.</li>
+      <li>Esfregue o dorso de cada mão com a palma da outra, entrelaçando os dedos.</li>
+      <li>Entrelace os dedos e esfregue entre eles.</li>
+      <li>Esfregue o polegar de cada mão com movimento circular.</li>
+      <li>Esfregue as pontas dos dedos na palma da mão oposta.</li>
+      <li>Enxágue bem com água limpa corrente.</li>
+      <li>Seque com papel-toalha limpo ou ao ar.</li>
+    </ol>
+    <p class="note">Lave as mãos por pelo menos 20 segundos, sempre após manipular caracóis.</p>
+  </div>
+</section>
+
+<div id="lightbox">
+  <button class="lb-back" id="lbBack">←</button>
+  <div class="lb-img-wrap" id="lbWrap">
+    <img id="lbImg" src="" alt="Foto de caracol em tela cheia">
+  </div>
+</div>
+
+<script>
+/* ================= FUNDOS SAZONAIS ================= */
+function aplicarFundoSazonal() {
+  var agora = new Date();
+  var mes = agora.getMonth() + 1; // 1 = janeiro ... 12 = dezembro
+  var dia = agora.getDate();
+  var body = document.body;
+
+  body.classList.remove('fundo-halloween', 'fundo-natal');
+
+  // Halloween: 29, 30 e 31 de outubro
+  if (mes === 10 && dia >= 29 && dia <= 31) {
+    body.classList.add('fundo-halloween');
+  }
+  // Natal: 20 a 25 de dezembro
+  else if (mes === 12 && dia >= 20 && dia <= 25) {
+    body.classList.add('fundo-natal');
+  }
+}
+
+aplicarFundoSazonal();
+setInterval(aplicarFundoSazonal, 60000);
+
+/* ================= IMAGENS ================= */
+var avatarUrls = [
+  "https://i.pinimg.com/originals/26/3a/33/263a33b8548777ff2c333f3500852f21.jpg",
+  "https://i.pinimg.com/originals/b0/f0/48/b0f048ac2fc1fed3bf2ba0a8c8be1eab.jpg",
+  "https://i.pinimg.com/736x/48/84/e3/4884e3fe6d279eef17736d83678b45a8.jpg"
+];
+
+var nativeImgUrl = "https://kelldrin.com.br/assets/blog/estados-de-sao-paulo-e-parana-registram-caracol-indiano-perigoso/imagem.jpg";
+var africanImgUrl = "https://i0.wp.com/zootecniabrasil.com/wp-content/uploads/2021/11/caracol-africanodivulgacao-1.jpg?fit=1200%2C900&ssl=1";
+
+var galleryUrls = [
+  "https://imgs.mongabay.com/wp-content/uploads/sites/25/2023/05/25212120/CARACOL-AFRICANO-7.jpeg",
+  "https://maceio.al.gov.br/transform/imagens/_850x560_crop_center-center_none/caramujo_1.jpg",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0vVwEuFyaPfh4iFcJFe53on3H7QSCZkQz__Z6o5VIQzqZcPrU8LSuWmxB&s=10",
+  "https://img.magnific.com/fotos-gratis/um-caracol-isolado-com-espaco-para-texto_1194-638946.jpg?semt=ais_hybrid&w=740&q=80",
+  "https://s2-umsoplaneta.glbimg.com/pScYdH7TmVxJw2wV93xd85xV-hw=/0x0:1300x940/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_7d5b9b5029304d27b7ef8a7f28b4d70f/internal_photos/bs/2025/c/K/BkkoTdSvmWcDIwbKkRtQ/img-1058-copy3-1300x940.jpeg"
+];
+
+/* ================= PERSISTÊNCIA ================= */
+var STORAGE_KEY = 'caracolandia_user';
+
+function loadUser() {
+  try {
+    var raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) { return null; }
+}
+
+function saveUser(user) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(user)); } catch (e) {}
+}
+
+/* ================= ESTADO ================= */
+var currentUser = loadUser();
+var selectedAvatar = avatarUrls[0];
+var editSelectedAvatar = avatarUrls[0];
+
+/* ================= CONSTRUIR GRELHA DE FOTOS ================= */
+function buildPhotoGrid(containerId, selectedUrl, onSelect) {
+  var container = document.getElementById(containerId);
+  container.innerHTML = '';
+  avatarUrls.forEach(function(url) {
+    var img = document.createElement('img');
+    img.src = url;
+    img.alt = 'Caracol';
+    img.loading = 'lazy';
+    if (url === selectedUrl) img.classList.add('selected');
+    img.onerror = function() { this.style.background = '#ddd'; };
+    img.onclick = function() {
+      var all = container.querySelectorAll('img');
+      for (var i = 0; i < all.length; i++) all[i].classList.remove('selected');
+      img.classList.add('selected');
+      onSelect(url);
+    };
+    container.appendChild(img);
+  });
+}
+
+/* ================= LOGIN: FOTO DE PERFIL ================= */
+var btnAvatarLogin = document.getElementById('btnAvatarLogin');
+var panelLogin = document.getElementById('panelLogin');
+var avatarPreviewLogin = document.getElementById('avatarPreviewLogin');
+var avatarLabelLogin = document.getElementById('avatarLabelLogin');
+
+avatarPreviewLogin.src = selectedAvatar;
+
+btnAvatarLogin.onclick = function() {
+  panelLogin.classList.toggle('show');
+  if (panelLogin.classList.contains('show')) {
+    buildPhotoGrid('gridLogin', selectedAvatar, function(url) {
+      selectedAvatar = url;
+      avatarPreviewLogin.src = url;
+      avatarLabelLogin.textContent = 'Foto escolhida ✓';
+      panelLogin.classList.remove('show');
+    });
+  }
+};
+
+/* ================= BOTÃO ENTRAR ================= */
+document.getElementById('btnEnter').onclick = function() {
+  var name = document.getElementById('inputName').value.trim();
+  var pass = document.getElementById('inputPass').value.trim();
+  if (!name || !pass) {
+    alert('Preencha nome e senha para continuar.');
+    return;
+  }
+  currentUser = { name: name, avatar: selectedAvatar, pass: pass };
+  saveUser(currentUser);
+  showApp();
+};
+
+function showApp() {
+  if (!currentUser) return;
+  document.getElementById('profileName').textContent = currentUser.name;
+  document.getElementById('profilePass').textContent = 'Conta protegida';
+  document.getElementById('profileImg').src = currentUser.avatar;
+  document.getElementById('profileImg').onerror = function(){ this.style.background='#ddd'; };
+
+  document.getElementById('imgNative').src = nativeImgUrl;
+  document.getElementById('imgAfrican').src = africanImgUrl;
+  document.getElementById('imgNative').onerror = function(){ this.style.background='#ddd'; };
+  document.getElementById('imgAfrican').onerror = function(){ this.style.background='#ddd'; };
+
+  var gallery = document.getElementById('gallery');
+  gallery.innerHTML = '';
+  galleryUrls.forEach(function(url) {
+    var img = document.createElement('img');
+    img.src = url;
+    img.alt = 'Caracol';
+    img.loading = 'lazy';
+    img.onerror = function() { this.style.background = '#ddd'; };
+    img.onclick = function() { openLightbox(url); };
+    gallery.appendChild(img);
+  });
+
+  document.getElementById('login').classList.remove('active');
+  document.getElementById('editScreen').classList.remove('active');
+  document.getElementById('app').classList.add('active');
+}
+
+/* ================= EDIÇÃO DE CONTA ================= */
+var btnAvatarEdit = document.getElementById('btnAvatarEdit');
+var panelEdit = document.getElementById('panelEdit');
+var avatarPreviewEdit = document.getElementById('avatarPreviewEdit');
+var avatarLabelEdit = document.getElementById('avatarLabelEdit');
+
+btnAvatarEdit.onclick = function() {
+  panelEdit.classList.toggle('show');
+  if (panelEdit.classList.contains('show')) {
+    buildPhotoGrid('gridEdit', editSelectedAvatar, function(url) {
+      editSelectedAvatar = url;
+      avatarPreviewEdit.src = url;
+      avatarLabelEdit.textContent = 'Foto escolhida ✓';
+      panelEdit.classList.remove('show');
+    });
+  }
+};
+
+document.getElementById('btnEdit').onclick = function() {
+  if (!currentUser) return;
+  document.getElementById('editName').value = currentUser.name;
+  document.getElementById('editPass').value = '';
+  editSelectedAvatar = currentUser.avatar;
+  avatarPreviewEdit.src = currentUser.avatar;
+  avatarLabelEdit.textContent = 'Escolher foto de perfil';
+  panelEdit.classList.remove('show');
+  document.getElementById('app').classList.remove('active');
+  document.getElementById('editScreen').classList.add('active');
+};
+
+document.getElementById('btnSaveEdit').onclick = function() {
+  var name = document.getElementById('editName').value.trim();
+  var newPass = document.getElementById('editPass').value.trim();
+  if (!name) {
+    alert('O nome não pode ficar vazio.');
+    return;
+  }
+  currentUser.name = name;
+  currentUser.avatar = editSelectedAvatar;
+  if (newPass) currentUser.pass = newPass;
+  saveUser(currentUser);
+  showApp();
+};
+
+document.getElementById('btnCancelEdit').onclick = function() {
+  document.getElementById('editScreen').classList.remove('active');
+  document.getElementById('app').classList.add('active');
+};
+
+document.getElementById('btnLogout').onclick = function() {
+  if (!confirm('Sair da conta? Você precisará entrar de novo na próxima vez.')) return;
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+  currentUser = null;
+  document.getElementById('inputName').value = '';
+  document.getElementById('inputPass').value = '';
+  selectedAvatar = avatarUrls[0];
+  avatarPreviewLogin.src = selectedAvatar;
+  avatarLabelLogin.textContent = 'Escolher foto de perfil';
+  panelLogin.classList.remove('show');
+  document.getElementById('editScreen').classList.remove('active');
+  document.getElementById('app').classList.remove('active');
+  document.getElementById('login').classList.add('active');
+};
+
+/* ================= ABAS ================= */
+var tabBtns = document.querySelectorAll('.tab-btn');
+for (var i = 0; i < tabBtns.length; i++) {
+  tabBtns[i].onclick = function() {
+    var allBtns = document.querySelectorAll('.tab-btn');
+    for (var j = 0; j < allBtns.length; j++) allBtns[j].classList.remove('active');
+    var allContents = document.querySelectorAll('.tab-content');
+    for (var k = 0; k < allContents.length; k++) allContents[k].classList.remove('active');
+    this.classList.add('active');
+    document.getElementById('tab-' + this.getAttribute('data-tab')).classList.add('active');
+  };
+}
+
+/* ================= LIGHTBOX ================= */
+var lightbox = document.getElementById('lightbox');
+var lbImg = document.getElementById('lbImg');
+var lbWrap = document.getElementById('lbWrap');
+var lbBack = document.getElementById('lbBack');
+
+var scale = 1, startScale = 1, tx = 0, ty = 0, startX = 0, startY = 0;
+var dragging = false, lastDist = 0;
+
+function openLightbox(src) {
+  lbImg.src = src;
+  resetTransform();
+  lightbox.classList.add('show');
+}
+function closeLightbox() {
+  lightbox.classList.remove('show');
+  lbImg.src = '';
+  resetTransform();
+}
+function resetTransform() {
+  scale = 1; tx = 0; ty = 0;
+  applyTransform();
+}
+function applyTransform() {
+  lbImg.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) scale(' + scale + ')';
+}
+
+lbBack.onclick = closeLightbox;
+
+lbWrap.addEventListener('mousedown', function(e) {
+  if (e.button !== 0) return;
+  dragging = true;
+  startX = e.clientX - tx;
+  startY = e.clientY - ty;
+});
+window.addEventListener('mousemove', function(e) {
+  if (!dragging) return;
+  tx = e.clientX - startX;
+  ty = e.clientY - startY;
+  applyTransform();
+});
+window.addEventListener('mouseup', function() { dragging = false; });
+lbWrap.addEventListener('wheel', function(e) {
+  if (!lightbox.classList.contains('show')) return;
+  e.preventDefault();
+  scale = Math.min(6, Math.max(1, scale - e.deltaY * 0.002));
+  applyTransform();
+}, { passive: false });
+
+lbWrap.addEventListener('touchstart', function(e) {
+  if (e.touches.length === 1) {
+    dragging = true;
+    startX = e.touches[0].clientX - tx;
+    startY = e.touches[0].clientY - ty;
+  } else if (e.touches.length === 2) {
+    dragging = false;
+    startScale = scale;
+    lastDist = dist(e.touches);
+  }
+}, { passive: true });
+
+lbWrap.addEventListener('touchmove', function(e) {
+  if (!lightbox.classList.contains('show')) return;
+  if (e.touches.length === 1 && dragging) {
+    tx = e.touches[0].clientX - startX;
+    ty = e.touches[0].clientY - startY;
+    applyTransform();
+    e.preventDefault();
+  } else if (e.touches.length === 2) {
+    var d = dist(e.touches);
+    if (lastDist > 0) {
+      scale = Math.min(6, Math.max(1, startScale * (d / lastDist)));
+      applyTransform();
+    }
+    e.preventDefault();
+  }
+}, { passive: false });
+
+lbWrap.addEventListener('touchend', function(e) {
+  if (e.touches.length === 0) {
+    dragging = false;
+    lastDist = 0;
+  }
+});
+
+function dist(touches) {
+  var dx = touches[0].clientX - touches[1].clientX;
+  var dy = touches[0].clientY - touches[1].clientY;
+  return Math.hypot(dx, dy);
+}
+
+/* ================= INICIALIZAÇÃO ================= */
+if (currentUser) {
+  showApp();
+} else {
+  document.getElementById('login').classList.add('active');
+}
+</script>
+</body>
+</html>

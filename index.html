@@ -8,7 +8,7 @@
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-  /* ===== FUNDOS SAZONAIS (MODO NATAL OU HALLOWEEN: LETRAS BRANCAS) ===== */
+  /* ===== FUNDOS SAZONAIS ===== */
   body.fundo-halloween,
   body.fundo-natal {
     background: transparent;
@@ -32,7 +32,6 @@
     background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20201123/pngtree-red-christmas-promotion-poster-background-image_498246.jpg");
   }
 
-  /* Header e telas transparentes no modo sazonal */
   body.fundo-halloween header,
   body.fundo-natal header {
     background: transparent;
@@ -51,7 +50,6 @@
     color: #ffffff;
   }
 
-  /* Todas as letras, títulos e textos brancos no modo Halloween ou Natal */
   body.fundo-halloween h2, body.fundo-natal h2,
   body.fundo-halloween h3, body.fundo-natal h3,
   body.fundo-halloween p, body.fundo-natal p,
@@ -80,7 +78,6 @@
     text-shadow: 0 1px 4px rgba(0,0,0,0.85);
   }
 
-  /* Campos de texto nos modos sazonais */
   body.fundo-halloween .field input[type="text"],
   body.fundo-halloween .field input[type="password"],
   body.fundo-natal .field input[type="text"],
@@ -95,7 +92,6 @@
     color: rgba(255, 255, 255, 0.7);
   }
 
-  /* Botões e controles nos modos sazonais */
   body.fundo-halloween .btn-secondary,
   body.fundo-natal .btn-secondary {
     background: rgba(0, 0, 0, 0.4);
@@ -123,7 +119,6 @@
     text-shadow: 0 1px 3px rgba(0,0,0,0.7);
   }
 
-  /* Abas nos modos sazonais */
   body.fundo-halloween .tabs-wrapper,
   body.fundo-natal .tabs-wrapper,
   body.fundo-halloween .user-box,
@@ -142,14 +137,12 @@
     font-weight: 700;
   }
 
-  /* Painel de fotos nos modos sazonais */
   body.fundo-halloween .photo-panel,
   body.fundo-natal .photo-panel {
     background: rgba(0, 0, 0, 0.7);
     border-color: rgba(255, 255, 255, 0.35);
   }
 
-  /* Passos de lavar as mãos nos modos sazonais */
   body.fundo-halloween .wash-steps li,
   body.fundo-natal .wash-steps li {
     background: rgba(0, 0, 0, 0.55);
@@ -158,7 +151,7 @@
     text-shadow: 0 1px 3px rgba(0,0,0,0.7);
   }
 
-  /* ===== MODO NORMAL (FUNDO BRANCO, LETRAS PRETAS) ===== */
+  /* ===== MODO NORMAL ===== */
   body {
     margin: 0;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -184,7 +177,6 @@
   .screen { display: none; padding: 16px; position: relative; z-index: 1; color: #000000; }
   .screen.active { display: block; }
 
-  /* ===== LOGIN ===== */
   #login { max-width: 420px; margin: 0 auto; color: #000000; }
   .field { margin-bottom: 14px; }
   .field label { display: block; font-size: .85rem; color: #000000; margin-bottom: 6px; font-weight: 600; }
@@ -256,7 +248,6 @@
   }
   .hint { font-size: .78rem; color: #000000; opacity: 0.8; margin-top: 4px; }
 
-  /* ===== PAINEL DE FOTOS ===== */
   .photo-panel {
     display: none;
     margin-top: 10px;
@@ -285,7 +276,6 @@
   }
   .photo-grid img.selected { border-color: #2b7cff; }
 
-  /* ===== APP / INÍCIO ===== */
   #app { max-width: 900px; margin: 0 auto; color: #000000; }
   #editScreen { color: #000000; }
   #editScreen h2 { color: #000000; }
@@ -318,7 +308,6 @@
     z-index: 20;
   }
 
-  /* ===== ABAS ===== */
   .tabs-wrapper {
     overflow-x: auto;
     overflow-y: hidden;
@@ -383,11 +372,9 @@
   .big-text p { color: #000000; }
   .big-text strong { color: #000000; }
 
-  /* Doenças */
   .disease-block h3 { color: #000000; margin-bottom: 6px; }
   .disease-block p { line-height: 1.6; font-size: .95rem; color: #000000; }
 
-  /* Galeria */
   .gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -402,7 +389,6 @@
     background: #f4f4f4;
   }
 
-  /* Lightbox */
   #lightbox {
     display: none;
     position: fixed;
@@ -445,7 +431,6 @@
     cursor: grab;
   }
 
-  /* Tutorial lavar mãos */
   .wash-steps { counter-reset: step; list-style: none; padding: 0; }
   .wash-steps li {
     counter-increment: step;
@@ -472,6 +457,235 @@
     display: flex; align-items: center; justify-content: center;
   }
   .note { font-size: .85rem; color: #000000; opacity: 0.8; margin-top: 8px; }
+
+  /* ===== ABA SÉRIES ===== */
+  .series-breadcrumb {
+    font-size: .8rem;
+    opacity: .75;
+    margin-bottom: 12px;
+    color: #000000;
+  }
+  .series-breadcrumb span { cursor: pointer; text-decoration: underline; }
+  .series-list { display: flex; flex-direction: column; gap: 10px; }
+  .series-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fafafa;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .series-item:active { background: #f0f0f0; }
+  .series-item .si-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    width: 44px;
+    text-align: center;
+  }
+  .series-item .si-info { flex: 1; min-width: 0; }
+  .series-item .si-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #000000;
+    margin-bottom: 2px;
+  }
+  .series-item .si-sub {
+    font-size: .82rem;
+    opacity: .7;
+    color: #000000;
+  }
+  .series-item .si-arrow {
+    font-size: 1.2rem;
+    opacity: .5;
+    flex-shrink: 0;
+  }
+
+  .chapter-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .chapter-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fafafa;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .chapter-item:active { background: #f0f0f0; }
+  .chapter-item .ci-num {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: #2b7cff;
+    color: #fff;
+    font-weight: 700;
+    font-size: .9rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .chapter-item .ci-title {
+    flex: 1;
+    font-size: .92rem;
+    font-weight: 600;
+    color: #000000;
+    line-height: 1.3;
+  }
+
+  .chapter-reader { max-width: 760px; margin: 0 auto; }
+  .chapter-reader .cr-header {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+  }
+  .chapter-reader .cr-serie {
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    opacity: .65;
+    color: #000000;
+    margin-bottom: 4px;
+  }
+  .chapter-reader .cr-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #000000;
+    line-height: 1.3;
+  }
+  .chapter-reader .cr-body {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #000000;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .chapter-reader .cr-body h4 {
+    margin: 20px 0 8px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #000000;
+  }
+  .chapter-nav {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid #eee;
+  }
+  .chapter-nav button {
+    flex: 1;
+    padding: 12px 10px;
+    border-radius: 12px;
+    font-size: .9rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    background: #ffffff;
+    color: #000000;
+  }
+  .chapter-nav button.primary {
+    background: #2b7cff;
+    border-color: #2b7cff;
+    color: #ffffff;
+  }
+  .chapter-nav button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+  }
+  .chapter-nav button:active:not(:disabled) { opacity: .8; }
+
+  .cr-progress {
+    text-align: center;
+    font-size: .8rem;
+    opacity: .7;
+    margin-top: 10px;
+    color: #000000;
+  }
+
+  .series-back-btn {
+    width: auto;
+    padding: 8px 14px;
+    border: 1px solid #cccccc;
+    border-radius: 20px;
+    background: #ffffff;
+    color: #000000;
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .series-back-btn:active { background: #f2f2f2; }
+
+  .serie-section-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0 0 4px;
+    color: #000000;
+  }
+  .serie-section-sub {
+    font-size: .82rem;
+    opacity: .7;
+    margin: 0 0 14px;
+    color: #000000;
+  }
+
+  /* Modo sazonal: ajustes para a aba séries */
+  body.fundo-halloween .series-item,
+  body.fundo-natal .series-item,
+  body.fundo-halloween .chapter-item,
+  body.fundo-natal .chapter-item,
+  body.fundo-halloween .chapter-reader .cr-header,
+  body.fundo-natal .chapter-reader .cr-header,
+  body.fundo-halloween .chapter-nav,
+  body.fundo-natal .chapter-nav,
+  body.fundo-halloween .series-back-btn,
+  body.fundo-natal .series-back-btn {
+    background: rgba(0,0,0,0.45);
+    border-color: rgba(255,255,255,0.35);
+    color: #ffffff !important;
+  }
+  body.fundo-halloween .series-item .si-title,
+  body.fundo-natal .series-item .si-title,
+  body.fundo-halloween .series-item .si-sub,
+  body.fundo-natal .series-item .si-sub,
+  body.fundo-halloween .chapter-item .ci-title,
+  body.fundo-natal .chapter-item .ci-title,
+  body.fundo-halloween .chapter-reader .cr-serie,
+  body.fundo-natal .chapter-reader .cr-serie,
+  body.fundo-halloween .chapter-reader .cr-title,
+  body.fundo-natal .chapter-reader .cr-title,
+  body.fundo-halloween .chapter-reader .cr-body,
+  body.fundo-natal .chapter-reader .cr-body,
+  body.fundo-halloween .chapter-reader .cr-body h4,
+  body.fundo-natal .chapter-reader .cr-body h4,
+  body.fundo-halloween .cr-progress,
+  body.fundo-natal .cr-progress,
+  body.fundo-halloween .series-breadcrumb,
+  body.fundo-natal .series-breadcrumb,
+  body.fundo-halloween .serie-section-title,
+  body.fundo-natal .serie-section-title,
+  body.fundo-halloween .serie-section-sub,
+  body.fundo-natal .serie-section-sub {
+    color: #ffffff !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.85);
+  }
+  body.fundo-halloween .chapter-nav button,
+  body.fundo-natal .chapter-nav button {
+    background: rgba(0,0,0,0.4);
+    border-color: rgba(255,255,255,0.45);
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  }
+  body.fundo-halloween .chapter-nav button.primary,
+  body.fundo-natal .chapter-nav button.primary {
+    background: rgba(43,124,255,0.55);
+    border-color: rgba(255,255,255,0.5);
+  }
 </style>
 </head>
 <body>
@@ -547,6 +761,7 @@
       <button class="tab-btn" data-tab="doenca">Doenças dos caracóis</button>
       <button class="tab-btn" data-tab="fotos">Ver fotos de caracóis</button>
       <button class="tab-btn" data-tab="pegar">Como pegar caracóis</button>
+      <button class="tab-btn" data-tab="series">SÉRIES</button>
     </nav>
   </div>
 
@@ -614,6 +829,11 @@
     </ol>
     <p class="note">Lave as mãos por pelo menos 20 segundos, sempre após manipular caracóis.</p>
   </div>
+
+  <!-- ===== ABA SÉRIES ===== -->
+  <div class="tab-content" id="tab-series">
+    <div id="seriesView"></div>
+  </div>
 </section>
 
 <div id="lightbox">
@@ -630,13 +850,12 @@ function aplicarFundoSazonal() {
   var modoParam = (params.get('modo') || params.get('tema') || '').toLowerCase();
 
   var agora = new Date();
-  var mes = agora.getMonth() + 1; // 1 = janeiro ... 12 = dezembro
+  var mes = agora.getMonth() + 1;
   var dia = agora.getDate();
   var body = document.body;
 
   body.classList.remove('fundo-halloween', 'fundo-natal');
 
-  // Permite forçar via URL (?modo=halloween, ?modo=natal, ?modo=normal) para facilitar testes
   if (modoParam === 'halloween') {
     body.classList.add('fundo-halloween');
     return;
@@ -649,11 +868,9 @@ function aplicarFundoSazonal() {
     return;
   }
 
-  // Halloween: 29, 30 e 31 de outubro
   if (mes === 10 && dia >= 29 && dia <= 31) {
     body.classList.add('fundo-halloween');
   }
-  // Natal: 20 a 25 de dezembro
   else if (mes === 12 && dia >= 20 && dia <= 25) {
     body.classList.add('fundo-natal');
   }
@@ -679,6 +896,2426 @@ var galleryUrls = [
   "https://img.magnific.com/fotos-gratis/um-caracol-isolado-com-espaco-para-texto_1194-638946.jpg?semt=ais_hybrid&w=740&q=80",
   "https://s2-umsoplaneta.glbimg.com/pScYdH7TmVxJw2wV93xd85xV-hw=/0x0:1300x940/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_7d5b9b5029304d27b7ef8a7f28b4d70f/internal_photos/bs/2025/c/K/BkkoTdSvmWcDIwbKkRtQ/img-1058-copy3-1300x940.jpeg"
 ];
+
+/* ================= DADOS DAS SÉRIES ================= */
+var seriesData = [
+  {
+    id: 'serie-1',
+    nome: 'Série 1',
+    filmes: [
+      {
+        id: 'filme-1',
+        titulo: 'OS CARACÓIS VALENTES',
+        capitulos: [
+          {
+            titulo: 'CAPÍTULO 1 — A BATALHA DO JARDIM',
+            texto: `Três caramujos nativos do Brasil estavam passeando pelo jardim de uma casa. Eles eram grandes, clarinhos e bonitinhos. O ambiente era cheio de plantas, galhos, folhas e vasos de flores. Tudo parecia extremamente realista, como na vida real.
+Enquanto passeavam pelas plantas, encontraram um enorme caramujo-africano escuro dentro de um vaso. Ele tinha uma carapaça gigantesca com desenhos de fogo e era muito malvado.
+O caramujo africano percebeu a presença dos três e perguntou:
+— O que vocês querem aqui no meu território?!
+Um dos caramujos respondeu:
+— Nada! A gente só está passeando. Não sabíamos que era seu território.
+— Então saiam daqui! — respondeu o africano.
+— Tá bom, tudo bem, eu vou sair.
+Os três se afastaram, mas foram para trás dos vasos de plantas. Enquanto o caramujo africano comia as folhas tranquilamente, os três começaram a planejar uma estratégia para derrotá-lo.
+
+OS PERSONAGENS
+
+Zexa (Capitão): líder do grupo, responsável por comandar os planos.
+
+Naduz (Segurança): responsável por vigiar as passagens e impedir fugas.
+
+Kany (Estrategista): responsável por comer as folhas para impedir que o inimigo consuma todas.
+
+Vaxy (Idealista): responsável por preparar armadilhas de gosma.
+
+Zexa falou:
+— Mande ver nos seus planos!
+Naduz respondeu:
+— Eu vou ficar de guarda na passagem da frente do jardim para o caramujo africano não fugir!
+Kany falou:
+— Vou comer todas as folhas para ele não consumir tudo!
+Vaxy completou:
+— Vou colocar armadilhas!
+
+O PLANO
+
+O plano era simples:
+
+Naduz ficaria na passagem da frente do jardim, bloqueando a saída.
+
+Kany comeria todas as folhas disponíveis antes que o caramujo africano pudesse consumi-las.
+
+Vaxy colocaria armadilhas feitas de uma gosma grudenta para prender o inimigo.
+
+Mas o caramujo africano não era nem um pouquinho bobo!
+Ele estava comendo quase todas as folhas, mas Kany conseguiu comer todas primeiro. Kany ficou bem gordinho!
+O africano tentou fugir pela passagem da frente, mas Naduz estava bloqueando o caminho.
+Então tentou escapar pela passagem de trás, mas Vaxy havia colocado uma armadilha de gosma. O africano ficou preso!
+Entretanto, uma pedra caiu de um vaso de planta e empurrou o caramujo africano, permitindo que ele escapasse da armadilha.
+Todos ficaram ao redor dele.
+O africano ficou furioso e gritou:
+— Ah, é assim, né?! Então vou transformar vocês em pó com minha força!
+Vaxy, Naduz e Kany responderam juntos:
+— Nem um pouco!
+Os três pularam em cima do caramujo africano, mas ele conseguiu desviar. Depois, o africano mordeu os três.
+
+A CHEGADA DE AFLOX
+
+De repente, apareceu outro caramujo na parede. Ele estava do lado do caramujo africano e decidiu ajudá-lo.
+Seu nome era Aflox.
+— Eu vou te ajudar, africano!
+Aflox desceu da parede e revelou suas habilidades especiais.
+Ele tinha um modo turbo e várias armas instaladas em cima da carapaça:
+
+Uma arma que disparava gosma.
+
+Uma arma que disparava sabonete.
+
+Uma arma que lançava pequenos bichinhos extremamente rápidos que mordiam os adversários.
+
+Aflox disparou uma grande quantidade de gosma contra os protagonistas.
+Mas uma pedra caiu do vaso de planta e atingiu os vilões, permitindo que os caracujos escapassem.
+Os protagonistas decidiram avançar e bater suas carapaças contra Aflox.
+Quando a batalha estava prestes a ficar ainda mais intensa, aconteceu algo inesperado!
+O caramujo africano mudou completamente de ideia.
+Ele decidiu abandonar Aflox e entrar para o grupo dos caramujos do bem!
+Agora Aflox estava sozinho!
+Ele havia perdido seu aliado justamente no momento em que mais precisava dele.`
+          },
+          {
+            titulo: 'CAPÍTULO 2 — A FUGA PARA A FLORESTA',
+            texto: `Depois que o caramujo africano abandonou Aflox e entrou para o grupo dos caracóis do bem, o grupo ficou muito mais forte. Agora Aflox estava sozinho e teria que enfrentar todos eles.
+Mas Aflox não pretendia desistir!
+A batalha continuou no jardim. O caramujo africano tentou rolar pelo chão para atingir Aflox com sua enorme carapaça, mas Aflox conseguiu desviar.
+Então Aflox ativou sua arma de sabonete e disparou dez sabonetes pelo chão.
+O chão ficou extremamente escorregadio!
+Todos os caracóis começaram a escorregar sem conseguir controlar seus movimentos. Eles deslizaram até baterem contra uma parede.
+Depois continuaram escorregando, passaram por baixo do portão da casa, desceram a rampa da entrada e chegaram até a pista.
+Vários carros passaram por cima deles! Os caracóis menores não sofreram danos, pois ficaram nas partes inferiores dos veículos, onde havia espaço suficiente para passarem sem serem esmagados.
+O caramujo africano, entretanto, era muito maior. Sua carapaça ficou raspando na parte inferior de alguns carros. Apesar das batidas e dos arranhões, ela não quebrou.
+Enquanto isso, Aflox continuava perseguindo o grupo.
+Os caracóis fugiram o máximo que conseguiram e chegaram às proximidades do Shopping Mangabeira. Eles conseguiram entrar no shopping, e os seguranças permitiram a entrada dos pequenos animais.
+Para se esconderem, entraram dentro de uma caixa de compras que estava sendo carregada por uma mulher.
+Mas Aflox também chegou ao shopping!
+Ele ficou perto da caixa e começou a ativar todas as armas instaladas em sua carapaça. Disparou gosma, sabonetes, pedras e até pequenos pedaços de vidro.
+Depois ativou seu modo fogo: chamas começaram a sair pelos buracos de suas armas!
+A mulher percebeu aquele caramujo cheio de equipamentos e ficou muito assustada. Ela saiu correndo com a caixa, deixou o shopping e foi parar em uma rodovia.
+Os caracóis não faziam ideia de onde estavam. Eles olharam por uma pequena abertura na caixa e perceberam que estavam em uma rodovia cheia de carros!
+A mulher finalmente abriu a caixa.
+Quando viu vários caracóis lá dentro, ficou completamente assustada. Os caracóis também ficaram assustados e chegaram a pular de medo.
+A mulher saiu correndo.
+Os caracóis ficaram parados, tentando descobrir o que fazer. Depois de toda aquela confusão, Zexa teve uma ideia.
+O caramujo africano era muito forte e tinha experiência em enfrentar inimigos. Por isso, Zexa decidiu deixar que ele assumisse a liderança.
+Agora o antigo inimigo era o novo capitão!
+O grupo organizou um plano: eles entrariam em uma floresta e ficariam por lá, comendo folhas e descansando, longe de Aflox.
+Todos concordaram.
+O grupo começou a seguir em direção à floresta, acreditando que finalmente conseguiria escapar.
+Mas havia um problema...
+Aflox tinha instalado um rastreador em um dos caracóis!
+Ele sabia exatamente onde o grupo estava e continuava seguindo todos eles.
+Os caracóis não sabiam que estavam sendo rastreados.
+E Aflox estava cada vez mais perto...
+FIM DO CAPÍTULO 2.`
+          }
+        ]
+      },
+      {
+        id: 'filme-2',
+        titulo: 'OS CARACÓIS VALENTES 2',
+        capitulos: [
+          {
+            titulo: 'CAPÍTULO 1 — O RASTREADOR ENGOLIDO',
+            texto: `Relembrando
+
+No filme anterior, Aflox havia instalado um rastreador em uma das folhas para descobrir a localização dos caracóis.
+Mas havia um detalhe: o rastreador era verde, assim como a folha!
+Kany acabou comendo a folha sem perceber que havia um rastreador nela.
+
+Continuando...
+
+O grupo estava explorando a floresta Neurilândia quando Kany começou a sentir algo estranho.
+Kany: Estou com dor de barriga! O que pode ser, hein?
+Enquanto isso, Aflox estava acompanhando tudo pelo seu GPS.
+Aflox: No meu rastreador, estão falando que eles estão na floresta chamada Neurilândia!
+E ele estava certo! Os caracóis realmente estavam naquela floresta.
+Todos continuavam andando e explorando o lugar.
+Aflox observava o GPS.
+Aflox: Hum, eles estão andando... Peraí! Por que eles estão parados? Todos parados do nada?
+Naquele momento, Kany não aguentou mais e vomitou.
+Kany: BLEEEEE!
+Zexa ficou desesperado.
+Zexa: NÃO ACREDITO QUE VOCÊ COMEU ISSO! AGORA ELE SABE ONDE A GENTE ESTÁ! FOGE!
+Todos começaram a correr pela floresta enquanto o rastreador permanecia no meio do caminho. Como ele havia sido expelido, Aflox já não conseguia acompanhar corretamente a localização do grupo.
+Os caracóis continuaram explorando até encontrarem uma antiga torre de vigia.
+Eles subiram e descobriram que havia camas do tamanho deles, comida e várias coisas que qualquer caracol adoraria encontrar.
+A torre estava muito velha, com musgo crescendo pelas paredes e sinais de abandono.
+Enquanto exploravam, encontraram um papel antigo.
+O papel mostrava o desenho de um caracol gigantesco chamado Aslox.
+Mas não era um caracol comum: segundo o desenho, ele era maior que a própria Terra e estava comendo o planeta inteiro!
+Havia também um texto avisando que Aslox era extremamente malvado e muito poderoso.
+Os caracóis ficaram diante daquele documento misterioso.
+Mas decidiram não dar muita atenção.
+FIM DO CAPÍTULO 1.`
+          },
+          {
+            titulo: 'CAPÍTULO 2 — A INVASÃO DA TORRE DE VIGIA',
+            texto: `Os caracóis decidiram ignorar completamente o papel sobre Aslox.
+Na verdade, eles fizeram algo inesperado: começaram a comer o próprio papel!
+O papel tinha gosto de doce.
+E os caracóis adoravam doces. Eles comiam praticamente qualquer coisa que tivesse gosto doce. Era uma das maiores paixões do grupo!
+Eles continuaram comendo até ficarem com a barriga cheia.
+Enquanto isso, Aflox também estava explorando a floresta Neurilândia.
+Ele procurava os caracóis, mas não conseguia encontrar nenhum sinal deles.
+Até que encontrou algo no chão.
+Era o rastreador!
+Aflox ficou furioso quando percebeu que o aparelho havia sido perdido.
+Mesmo assim, continuou explorando a floresta, procurando pistas.
+Depois de algum tempo, encontrou uma torre de vigia.
+Era justamente a torre onde os caracóis estavam escondidos!
+Os protagonistas olharam pela janela e viram Aflox.
+Ele também os viu!
+Aflox: EU VOU MATAR VOCÊS! NUNCA VOU DESISTIR!
+Os caracóis ficaram assustadíssimos.
+Aflox começou a subir as escadas da torre.
+Os protagonistas correram para bloquear a entrada. Colocaram tábuas de madeira na porta para impedir que ele entrasse.
+Mas Aflox era persistente.
+Ele começou a forçar a porta até conseguir rachá-la.
+Finalmente, conseguiu entrar!
+Os caracóis ficaram desesperados e procuraram outra saída.
+Foi quando encontraram um pequeno elevador, do tamanho de um caracol.
+Todos entraram juntos.
+Aflox ainda estava tentando avançar pela torre quando o elevador começou a descer.
+Os caracóis conseguiram escapar!
+Aflox ficou para trás.
+O elevador levou o grupo até uma saída, e eles continuaram fugindo.
+Depois de muito tempo, chegaram novamente ao Shopping Mangabeira.
+Dessa vez, decidiram se esconder embaixo de um banco onde várias pessoas estavam sentadas.
+Ninguém percebeu a presença deles.
+Mesmo sendo caracóis muito lentos, conseguiram ficar completamente escondidos.
+Pouco depois, Aflox também chegou ao Shopping Mangabeira.
+Ele começou a procurar os protagonistas, mas não encontrou ninguém.
+Os caracóis estavam bem debaixo do banco!
+E Aflox não fazia a menor ideia!
+FIM DO CAPÍTULO 2.`
+          },
+          {
+            titulo: 'CAPÍTULO 3 — A CIDADE DOS CARACÓIS',
+            texto: `Aflox passou direto pelo banco sem perceber que os protagonistas estavam escondidos embaixo dele.
+Ele começou a procurar por todo o shopping.
+Procurou nas escadas rolantes, nas brechas, dentro das lojas e em praticamente todos os lugares que conseguia encontrar.
+Até mesmo procurou nas portas de segurança, aquelas utilizadas somente por funcionários autorizados.
+Mas não encontrou absolutamente nada!
+Aflox ficou extremamente irritado.
+Enquanto ele procurava desesperadamente, os protagonistas já haviam conseguido fugir do shopping.
+Eles estavam muito longe dali.
+O grupo chegou a uma cidade chamada Havina.
+Mas Havina não era uma cidade comum.
+Era uma cidade cheia de caracóis!
+Havia caracóis por todos os lados: um à esquerda, outro à direita, vários nas ruas, nas construções e nas plantas.
+Parecia que existiam milhões de caracóis naquele lugar!
+Os protagonistas ficaram impressionados com a quantidade de habitantes.
+Eles começaram a conversar com os moradores e rapidamente fizeram novas amizades.
+Ao todo, conseguiram fazer 30 novas amizades!
+E havia uma coisa muito interessante: aqueles caracóis eram extremamente fortes.
+Agora o grupo tinha muitos novos aliados.
+Zexa, Naduz, Kany, Vaxy e o antigo caramujo africano estavam finalmente em um lugar onde não precisavam ficar sozinhos.
+Enquanto isso, Aflox ainda estava procurando os protagonistas no Shopping Mangabeira.
+Ele não fazia ideia de que todos já estavam em outra cidade, cercados por dezenas de novos amigos.
+Agora os protagonistas tinham um grupo muito maior e mais forte.
+Mas Aflox ainda não havia desistido.
+E a grande pergunta era:
+O QUE AFLOX VAI FAZER AGORA?!
+FIM DO CAPÍTULO 3.`
+          }
+        ]
+      },
+      {
+        id: 'filme-3',
+        titulo: 'OS CARACÓIS VALENTES 3',
+        capitulos: [
+          {
+            titulo: 'CAPÍTULO 1 — A BATALHA CONTRA OS 30 CARACÓIS',
+            texto: `Os caracóis estavam preparados em uma grande sala da cidade de Havina.
+Enquanto isso, Aflox estava utilizando outro rastreador. Dessa vez, o aparelho estava dentro do caramujo africano, pois ele havia comido uma folha que também tinha um rastreador escondido!
+Aflox acompanhava a localização pelo seu GPS.
+Depois de muito tempo procurando, finalmente chegou à sala onde estavam os protagonistas.
+Quando abriu a entrada, encontrou uma surpresa enorme!
+Havia dezenas de caracóis esperando por ele. Eram muito fortes, musculosos e faziam bastante academia. Além disso, comiam muitas folhas e alfaces para manter sua força.
+Aflox ficou olhando para todos.
+Aflox: Ah, não! Vou ter que lutar com isso tudo? É brincadeira, né?!
+Os outros caracóis responderam:
+Caracóis: É! Isso não é brincadeira! A gente vai lutar contra você!
+Aflox começou a rir.
+Aflox: Vocês são uma formiga comparados a mim!
+E então começou uma grande batalha!
+Um dos caracóis utilizou sabonete, fazendo outro escorregar pelo chão. Mas um terceiro caracol aproveitou a situação, pulou em cima do que estava escorregando e usou o impulso para saltar em direção a Aflox!
+Aflox tentou se defender.
+Ele ativou sua arma de fogo e disparou chamas!
+Mas o caracol que estava em cima dele conseguiu desviar.
+Em seguida, Aflox ativou sua arma de gosma e disparou contra praticamente todos os caracóis da sala.
+Foi quando uma enorme pedra caiu!
+A pedra atingiu os caracóis, mas eles conseguiram se soltar e continuar a batalha.
+Todos ficaram furiosos e avançaram juntos.
+Vieram socos, chutes e várias pancadas de carapaça!
+Aflox começou a perder o controle da situação. Os caracóis estavam atacando de todos os lados, e suas armas já não conseguiam acompanhar tantos adversários.
+A batalha estava chegando ao seu momento mais intenso.`
+          },
+          {
+            titulo: 'CAPÍTULO 2 — O DESPERTAR DE CARA-ZILLA',
+            texto: `Aflox estava muito machucado depois da batalha. Seu corpo tinha cicatrizes, e várias armas instaladas em sua carapaça haviam quebrado.
+Os caracóis ficaram observando o inimigo derrotado.
+Kany sentiu pena de Aflox e decidiu ajudá-lo.
+Mas aconteceu algo completamente inesperado!
+Quando Kany ajudou Aflox, todas as cicatrizes dele desapareceram.
+E não foi só isso!
+Suas armas foram consertadas e, em vez de ficarem como antes, Aflox acabou criando ainda mais armas!
+Agora ele estava muito mais forte do que anteriormente!
+Os protagonistas perceberam que haviam cometido um grande erro.
+Aflox imediatamente começou a atacar novamente.
+Todos os caracóis saíram correndo da sala enquanto ele disparava gosma em todas as direções.
+Mas dessa vez eles não estavam fugindo por medo.
+Eles tinham um plano!
+Os caracóis decidiram chamar alguém que poderia resolver aquela situação: CARA-ZILLA!
+
+A CHEGADA DO GIGANTE
+
+Cara-Zilla era um caracol gigantesco, maior do que a Torre Eiffel, localizada na França.
+Ele tinha uma aparência impressionante.
+Seu corpo era completamente preto, e sua enorme carapaça possuía rachaduras que brilhavam em azul neon.
+Essas rachaduras liberavam enormes jatos de energia e fogo azul, iluminando tudo ao redor.
+Cara-Zilla era uma criatura extremamente poderosa!
+Quando Aflox percebeu a chegada daquele gigante, ficou completamente assustado.
+Ele olhou para cima e viu o enorme Cara-Zilla diante dele.
+Aflox: O QUÊ?! QUE NEGÓCIO É ESSE?!
+Cara-Zilla começou a liberar seus poderosos jatos de energia pelas rachaduras azuis da carapaça.
+Aflox tentou resistir, mas acabou recebendo uma queimação extremamente forte na carapaça. Ela quase derreteu completamente!
+Dessa vez, Aflox não conseguiu continuar.
+Ele ficou com tanto medo que decidiu fugir para outro país!
+
+A GRANDE COMEMORAÇÃO
+
+Depois que Aflox foi embora, todos os caracóis do país começaram a comemorar.
+Os protagonistas, os trinta novos amigos, o antigo caramujo africano e muitos outros caracóis se reuniram para celebrar a vitória.
+Cara-Zilla também participou da comemoração!
+Finalmente, Aflox havia sido derrotado e fugido do país.
+Os caracóis estavam felizes, pois agora poderiam viver em paz.
+Mas ninguém sabia se Aflox realmente havia desistido de suas perseguições...
+FIM DO FILME 3.`
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'serie-2',
+    nome: 'Série 2 — Zinar',
+    filmes: [
+      {
+        id: 'filme-1',
+        titulo: 'ZINAR: A LESMA QUE SONHAVA EM TER UMA CARAPAÇA',
+        capitulos: [
+          {
+            titulo: 'CAPÍTULO 1 — O SONHO DE ZINAR',
+            texto: `Era uma vez, no País dos Caracóis, uma lesma chamada Zinar. Ela era simpática, curiosa e adorava passear pelos jardins.
+Mas Zinar tinha um sonho que parecia impossível: ter uma carapaça igual à dos caracóis!
+Todos os dias, ela observava os caracóis passando com suas lindas casinhas nas costas. Alguns tinham carapaças douradas, outros tinham listras coloridas, e alguns possuíam carapaças tão brilhantes que pareciam joias.
+— Ah, se eu pudesse ter uma carapaça dessas! — suspirava Zinar.
+À noite, ela se escondia dentro de vasos de plantas para dormir. E, sempre que fechava os olhos, sonhava com uma carapaça maravilhosa, roxa e brilhante, com desenhos prateados e uma espiral perfeita.
+Só que, quando acordava, continuava sendo uma lesma sem carapaça.
+Até que um dia uma notícia mudou tudo!`
+          },
+          {
+            titulo: 'CAPÍTULO 2 — O COMÉRCIO DE SICORMÉCIO',
+            texto: `Um caracol chamado Devrim anunciou uma novidade para todo o país:
+— Atenção, habitantes do País dos Caracóis! Acabei de abrir um comércio especializado em carapaças! Temos modelos estilosos, bonitos e até carapaças temporárias para quem quiser experimentar!
+Zinar quase não acreditou no que ouviu.
+— É a minha oportunidade! Finalmente vou realizar meu sonho!
+Ela juntou suas economias e partiu para Sicormécio, a cidade onde ficava o comércio.
+Quando chegou, ficou encantada. Havia carapaças de todas as cores, tamanhos e formatos.
+Zinar escolheu uma carapaça roxa com detalhes prateados. Era exatamente o estilo que ela imaginava em seus sonhos!
+Entretanto, quando tentou colocá-la, percebeu um problema: a carapaça não se ajustava ao corpo dela.
+— Senhor vendedor, será que você poderia modificar um pouquinho esta carapaça? Ela não cabe em mim direito.
+O vendedor olhou para Zinar e respondeu com impaciência:
+— Este comércio é para caracóis! Não tenho tempo para ficar modificando carapaças para uma lesma. Vá embora!
+— Mas eu posso pagar! — insistiu ela.
+— Eu já disse para ir embora!
+Zinar saiu da loja com os olhos cheios de lágrimas. Pela primeira vez, sentiu que seu sonho estava sendo tratado como algo sem importância.`
+          },
+          {
+            titulo: 'CAPÍTULO 3 — AS GRANDES AVENTURAS',
+            texto: `Durante muito tempo, Zinar viajou pelo País dos Caracóis em busca de uma solução.
+Primeiro, visitou um artesão que fabricava carapaças artificiais. Ele tentou construir uma para ela, mas o resultado ficou pesado demais.
+Depois, conheceu uma inventora que criou uma carapaça feita de folhas resistentes. Ficou bonita, mas se desmontou na primeira chuva forte.
+Em outra aventura, Zinar encontrou um grupo de caracóis cientistas que estudavam materiais capazes de se adaptar ao corpo de diferentes moluscos. Eles prometeram ajudá-la, mas ainda não tinham encontrado uma solução.
+Apesar de todas as dificuldades, Zinar não desistiu.
+Ela atravessou florestas, conheceu cidades distantes e fez novos amigos. Aos poucos, descobriu que era muito mais inteligente e corajosa do que imaginava.
+Certa tarde, um pequeno caracol cientista contou a ela sobre um laboratório experimental.
+— Existe um lugar que pesquisa modificações genéticas em moluscos. Talvez eles consigam encontrar uma solução para você!
+Zinar decidiu ir até lá imediatamente.`
+          },
+          {
+            titulo: 'CAPÍTULO 4 — O LABORATÓRIO DAS POSSIBILIDADES',
+            texto: `O laboratório ficava nos arredores da cidade de Neocaracolândia.
+Quando Zinar chegou, explicou sua história aos pesquisadores.
+A cientista-chefe ouviu tudo com atenção.
+— Você não quer simplesmente usar uma carapaça emprestada. Quer uma que faça parte de você, não é?
+— Exatamente! Quero uma carapaça que combine comigo e que eu possa usar de verdade!
+A equipe começou a pesquisar uma maneira fictícia de modificar o desenvolvimento biológico de Zinar, estudando como determinadas características poderiam permitir a formação de uma estrutura semelhante à carapaça dos caracóis.
+Depois de muitas experiências, os cientistas anunciaram:
+— Zinar, conseguimos desenvolver uma solução experimental para o seu caso!
+O procedimento foi realizado com acompanhamento da equipe. Depois de um período de recuperação, chegou o grande momento.
+Zinar olhou para o espelho.
+Ela tinha conseguido!
+Sua nova carapaça era roxa, com faixas prateadas, pequenos detalhes azulados e uma espiral elegante que brilhava sob a luz.
+Era a carapaça mais estilosa que alguém já tinha visto no País dos Caracóis!
+— EU CONSEGUI! — comemorou Zinar.
+Pela primeira vez, seu sonho tinha se tornado realidade.`
+          },
+          {
+            titulo: 'CAPÍTULO 5 — A LESMA MAIS FAMOSA DO PAÍS',
+            texto: `Quando Zinar voltou para Sicormécio, algo extraordinário aconteceu.
+Assim que ela entrou na praça central, todos pararam para olhar.
+— Quem é ela?
+— Olhem aquela carapaça!
+— Nunca vi nada tão bonito!
+Dezenas de caracóis começaram a tirar fotografias. Alguns jornalistas apareceram, e logo a história de Zinar estava nas notícias de todo o país.
+A antiga lesma que tinha sido expulsa de um comércio agora era uma celebridade!
+E quem apareceu entre a multidão?
+O vendedor!
+Ele reconheceu Zinar imediatamente.
+— Espere! Você é aquela lesma que veio à minha loja!
+— Sou eu mesma — respondeu Zinar.
+O vendedor ficou impressionado.
+— Sua carapaça é extraordinária! Você deveria voltar ao meu comércio. Poderíamos fazer uma parceria!
+Zinar olhou para ele e respondeu:
+— Quando eu precisava de ajuda, você me expulsou. Agora que todos gostam de mim, quer fazer parceria comigo?
+O vendedor não soube o que dizer.
+Então Zinar anunciou:
+— A partir de hoje, você está expulso da minha nova loja! Aqui, nenhuma lesma será tratada como inferior por não ter uma carapaça.
+Os caracóis da praça aplaudiram.
+O vendedor teve que deixar o estabelecimento que Zinar havia adquirido.`
+          },
+          {
+            titulo: 'CAPÍTULO 6 — A MAIOR FORTUNA DO MUNDO',
+            texto: `A fama de Zinar cresceu tanto que ela decidiu abrir sua própria empresa: Zinar Carapaças.
+Mas havia uma grande diferença em relação ao antigo comércio.
+Sua empresa criava carapaças adaptáveis, acessórios personalizados e modelos temporários para diferentes necessidades. E todos os clientes eram recebidos com respeito, fossem caracóis ou lesmas.
+A empresa fez tanto sucesso que começou a vender seus produtos em todas as cidades do País dos Caracóis.
+Em poucos anos, Zinar se tornou a lesma mais rica do mundo!
+Ela comprou uma enorme mansão com jardins, centenas de vasos de plantas e uma sala inteira dedicada às carapaças mais bonitas que já tinha visto.
+Mesmo com toda aquela riqueza, nunca esqueceu as noites em que dormia dentro de um simples vaso, imaginando como seria ter uma carapaça.
+Certa noite, Zinar colocou uma fotografia antiga ao lado da cama. Era uma imagem dela antes de realizar seu sonho.
+Ela sorriu e disse:
+— Aquela pequena lesma tinha um sonho enorme. E ninguém conseguiu impedi-la de tentar.
+Depois, foi dormir em seu jardim particular, cercada por suas plantas favoritas.
+E, dessa vez, quando sonhou com uma carapaça maravilhosa, acordou e percebeu que já estava usando uma.
+FIM.`
+          }
+        ]
+      },
+      {
+        id: 'filme-2',
+        titulo: 'ZINAR 2: A CARAPAÇA DAS ESPIRAIS DE FOGO',
+        capitulos: [
+          {
+            titulo: 'CAPÍTULO 1 — A CHEGADA DE YEKAPY',
+            texto: `Depois de se tornar a lesma mais rica do mundo, Zinar passou a ser conhecida como Antigalesma, a primeira lesma a conquistar uma carapaça tão bonita e resistente.
+Sua carapaça roxa, com detalhes prateados e azulados, era famosa no País dos Caracóis. Ela brilhava tanto que, quando o sol batia nela, parecia uma joia.
+Mas nem todo mundo gostava do sucesso da Antigalesma.
+Em uma região distante vivia Yekapy, um caramujo vilão que era cinco vezes maior do que a antiga lesma Zinar. Ele tinha uma carapaça enorme e escura e gostava de assustar os habitantes do país.
+Quando soube que uma antiga lesma havia conseguido uma carapaça mais famosa do que a dele, ficou furioso.
+— Como assim uma lesma tem uma carapaça mais admirada do que a minha?! Vou acabar com essa carapaça e provar que sou o mais poderoso!
+E assim começou o plano de Yekapy.`
+          },
+          {
+            titulo: 'CAPÍTULO 2 — O ATAQUE À CARAPAÇA',
+            texto: `Certa manhã, Antigalesma estava passeando tranquilamente pelo jardim de sua mansão quando Yekapy apareceu.
+— Então você é a famosa Antigalesma? — perguntou ele.
+— Sim! O que você quer?
+— Quero ver se essa sua carapaça é realmente tão resistente quanto dizem!
+Antes que ela pudesse responder, Yekapy tentou danificar a carapaça com toda a sua força.
+Mas aconteceu algo surpreendente: a carapaça praticamente não sofreu danos!
+Yekapy ficou indignado.
+— O quê?! Isso é impossível!
+Ele recuou, preparou-se e decidiu tentar algo ainda mais ousado.
+O enorme caramujo pulou e caiu com todo o seu peso sobre a carapaça de Antigalesma.
+— CRAAAC!
+Um pequeno estalo ecoou pelo jardim.
+Yekapy levantou-se rapidamente, esperando encontrar a carapaça destruída.
+Mas ela continuava inteira!
+Havia apenas uma rachadura minúscula.
+— Hahaha! — debochou Yekapy. — Pelo menos consegui deixar uma marca!
+Antigalesma não respondeu. Ela estava assustada demais para falar.`
+          },
+          {
+            titulo: 'CAPÍTULO 3 — A PEQUENA RACHADURA',
+            texto: `Antigalesma correu para dentro de sua mansão e foi diretamente até o espelho.
+Quando viu a carapaça, ficou horrorizada.
+Não estava quebrada. Não havia nenhum pedaço faltando. Nem sequer existia um grande risco.
+Mas havia uma rachadura minúscula, tão pequena que quase ninguém perceberia.
+Quase ninguém.
+Antigalesma percebeu imediatamente.
+— NÃO! Minha carapaça! Ela não pode ter uma rachadura!
+Ela passou muito tempo olhando para o espelho, tentando encontrar uma maneira de reparar a marca.
+Para ela, aquela carapaça não era apenas um objeto bonito. Representava todos os anos em que sonhou, todas as aventuras que enfrentou e todas as dificuldades que superou até conseguir realizar seu maior desejo.
+Ela queria que sua carapaça continuasse brilhando, sem nenhuma imperfeição.
+— Eu lutei tanto para conseguir isso... Por que Yekapy fez uma coisa dessas?
+A tristeza começou a transformar-se em raiva.
+E foi então que algo extraordinário aconteceu.`
+          },
+          {
+            titulo: 'CAPÍTULO 4 — O DESPERTAR DAS ESPIRAIS DE FOGO',
+            texto: `A carapaça começou a brilhar intensamente.
+Primeiro, as espirais prateadas mudaram de posição. Depois, os desenhos roxos começaram a se movimentar lentamente pela superfície.
+Antigalesma arregalou os olhos.
+— O que está acontecendo?!
+As espirais se multiplicaram, formando desenhos novos e complexos. Linhas luminosas percorriam a carapaça como se estivessem vivas.
+De repente, as espirais transformaram-se em chamas mágicas que se movimentavam pela superfície da carapaça, sem queimá-la.
+O roxo ficou mais intenso, o prata transformou-se em prata incandescente, e o azul ganhou um brilho extraordinário.
+Mas a maior surpresa ainda estava por vir.
+Entre as chamas apareceu uma imagem: Yekapy caindo em um enorme mar de fogo, representado pelos próprios desenhos mágicos da carapaça.
+Era uma espécie de visão simbólica do destino que poderia esperar o vilão caso continuasse tentando destruí-la.
+Antigalesma ficou impressionada.
+— Minha carapaça... está mudando sozinha!
+A rachadura continuava ali, mas agora estava cercada por espirais brilhantes que pareciam protegê-la.
+E a carapaça ganhou um novo poder: quanto mais Antigalesma sentia emoções intensas, mais seus desenhos mágicos se movimentavam.`
+          },
+          {
+            titulo: 'CAPÍTULO 5 — YEKAPY SENTE MEDO',
+            texto: `No dia seguinte, Yekapy voltou à mansão, convencido de que conseguiria assustar Antigalesma novamente.
+Mas, quando ela saiu para o jardim, ele parou imediatamente.
+A carapaça estava diferente.
+As espirais de fogo se moviam por toda a superfície, formando figuras que pareciam observar os arredores.
+Yekapy aproximou-se devagar.
+— O que você fez com a sua carapaça?!
+Antigalesma virou-se para ele.
+As chamas desenhadas mudaram de forma, e a imagem de Yekapy caindo no fogo apareceu novamente.
+O enorme caramujo ficou assustado e recuou.
+— Isso é algum tipo de magia?!
+— Eu não sei exatamente como funciona — respondeu Antigalesma. — Mas sei que você não deveria ter tentado destruir algo tão importante para mim!
+Yekapy percebeu que tinha provocado uma transformação que não compreendia.
+Pela primeira vez, ele não sabia o que fazer.
+Mesmo sendo cinco vezes maior do que a antiga Zinar, sentiu que tamanho não era tudo.
+Ele foi embora, decidido a descobrir o segredo daquela carapaça.`
+          },
+          {
+            titulo: 'CAPÍTULO 6 — MUITAS AVENTURAS E UMA MUDANÇA INESPERADA',
+            texto: `Nos meses seguintes, Antigalesma e Yekapy encontraram-se diversas vezes.
+No começo, continuaram discutindo.
+Yekapy tentava descobrir como os desenhos mágicos funcionavam, enquanto Antigalesma procurava compreender por que a carapaça reagia às suas emoções.
+Durante uma aventura, os dois ficaram presos em uma região rochosa depois de uma tempestade. Yekapy, apesar de ser um vilão, usou seu tamanho para ajudá-la a remover obstáculos do caminho.
+Em outra ocasião, Antigalesma salvou Yekapy de uma situação complicada, usando sua inteligência para encontrar uma saída.
+Aos poucos, começaram a perceber que não precisavam ser inimigos.
+Yekapy finalmente confessou:
+— Eu tinha inveja de você. Todo mundo admirava sua carapaça, e eu queria provar que era mais poderoso.
+Antigalesma respondeu:
+— Você poderia ter me pedido para conversar. Não precisava tentar destruir algo tão importante para mim.
+Yekapy abaixou a cabeça.
+— Você tem razão. Desculpe por ter feito isso.
+Antigalesma aceitou o pedido de desculpas, embora deixasse claro que ele nunca mais deveria tentar danificar sua carapaça.
+Com o passar do tempo, os dois ficaram cada vez mais próximos. A rivalidade transformou-se em amizade e, depois, em um sentimento especial.
+Yekapy descobriu que Antigalesma era muito mais do que uma carapaça bonita. Ela era corajosa, inteligente, determinada e generosa.
+E Antigalesma percebeu que Yekapy também podia mudar e tornar-se alguém melhor.`
+          },
+          {
+            titulo: 'CAPÍTULO 7 — O CASAMENTO DOS DOIS',
+            texto: `Depois de muitas aventuras, Yekapy e Antigalesma decidiram se casar.
+A cerimônia aconteceu em um jardim enorme, decorado com flores roxas, prateadas e azuis.
+Caracóis, caramujos e lesmas vieram de diferentes cidades para assistir ao casamento.
+Antigalesma usava sua magnífica carapaça de espirais mágicas, que brilhava sob a luz do sol. A pequena rachadura ainda existia, mas já não representava apenas uma lembrança dolorosa. Também lembrava a ela tudo o que havia aprendido durante aquela jornada.
+Yekapy, por sua vez, havia deixado para trás seu comportamento de vilão.
+Durante a cerimônia, ele prometeu respeitar Antigalesma, protegê-la e nunca mais tentar machucá-la.
+Ela também prometeu permanecer ao lado dele durante as novas aventuras que viessem pela frente.
+E assim, diante de todos os convidados, os dois se casaram!
+A multidão comemorou, e as espirais da carapaça iluminaram o jardim com suas cores mágicas.`
+          },
+          {
+            titulo: 'CAPÍTULO 8 — UMA FAMÍLIA DE CARACÓIS E LESMAS',
+            texto: `Algum tempo depois, Antigalesma e Yekapy tiveram uma família enorme.
+Seus filhos eram uma mistura surpreendente de características de caracóis e lesmas.
+Alguns nasceram com carapaças pequenas e brilhantes, enquanto outros nasceram sem carapaça, como a mãe havia nascido.
+Havia filhotes roxos, marrons, azulados e prateados. Um deles até apresentava pequenas espirais luminosas em sua carapaça!
+Antigalesma amava todos igualmente.
+Ela ensinou aos filhos que cada um tinha suas próprias características e que ninguém deveria ser tratado como inferior por ser diferente.
+Yekapy também mudou completamente. Em vez de assustar os habitantes do país, passou a usar seu tamanho para ajudar a família e proteger os jardins.
+A antiga rivalidade virou uma história que todos contavam para as novas gerações.
+E a carapaça de Antigalesma continuou sendo uma das mais famosas do mundo, com suas espirais mágicas que pareciam chamas dançando.
+E foi assim que a antiga lesma que sonhava com uma carapaça encontrou não apenas um poder extraordinário, mas também uma família e um novo começo.
+FIM DO FILME 2.`
+          }
+        ]
+      },
+      {
+        id: 'filme-3',
+        titulo: 'ZINAR 3: A TROPA DOS GATOS E O SEQUESTRO DOS FILHOTES',
+        capitulos: [
+          {
+            titulo: 'CAPÍTULO 1 — O DESAPARECIMENTO DOS FILHOTES',
+            texto: `Depois dos acontecimentos do segundo filme, Antigalesma e Yekapy viviam felizes com seus filhos no País dos Caracóis. A família tinha uma vida tranquila, e os filhotes cresciam cada vez mais, aprendendo com os pais sobre coragem, inteligência e união.
+Mas essa tranquilidade estava prestes a acabar.
+Em uma região distante, três gatos planejavam dominar o território dos caracóis e caramujos. Eles eram conhecidos como Zokri, Deyna e Sontrak.
+Zokri era um gato siamês de olhos azuis, inteligente e manipulador.
+Deyna era um gato laranja, rápido e convencido de que sempre conseguia escapar de qualquer situação.
+Sontrak era um gato marrom-escuro, enorme e forte, que gostava de intimidar os outros.
+Juntos, eles formavam a temida Tropa dos Gatos.
+Certa noite, enquanto Antigalesma e Yekapy estavam longe de casa, os três gatos invadiram o lugar onde os filhotes estavam e os levaram embora.
+Quando os pais voltaram, encontraram o local vazio.
+— MEUS FILHOS! — gritou Antigalesma.
+Ela procurou atrás dos vasos de plantas, entre as pedras, no jardim e em todos os cantos da propriedade.
+Yekapy também começou a procurar desesperadamente.
+— Eles não podem ter desaparecido assim! Precisamos encontrá-los!
+Os dois passaram horas procurando, mas não encontraram nenhum sinal dos filhotes.
+Até que ouviram passos atrás deles.`
+          },
+          {
+            titulo: 'CAPÍTULO 2 — A AMEAÇA DA TROPA DOS GATOS',
+            texto: `Os três gatos apareceram diante de Antigalesma e Yekapy, com expressões de deboche.
+Zokri deu um passo à frente e falou:
+— Estão procurando seus filhotes?
+Antigalesma imediatamente se aproximou.
+— ONDE ELES ESTÃO?! O QUE VOCÊS FIZERAM COM ELES?!
+Zokri respondeu tranquilamente:
+— Não precisam se preocupar. Seus filhotes estão em um lugar seguro.
+Mas aquilo era uma mentira. Os filhotes não estavam em um lugar seguro, e os gatos não pretendiam devolvê-los tão facilmente.
+Yekapy ficou furioso.
+— Escutem bem! Se vocês não devolverem nossos filhos, eu prometo que vou derrotar cada um de vocês!
+Deyna começou a rir.
+— Ah, é? Então venham procurá-los!
+Sontrak cruzou as patas e completou:
+— Se querem seus filhotes, vão ter que encontrá-los sozinhos. Boa sorte! Não vamos dar nenhuma dica!
+Os três gatos foram embora, deixando os pais desesperados.
+Antigalesma ficou abalada, mas Yekapy se aproximou dela.
+— Calma, Antigalesma. Nós vamos encontrar nossos filhos. Eu prometo que não vou desistir deles.
+Ela respirou fundo e respondeu:
+— Então vamos procurá-los em todos os lugares!
+E assim começou a maior busca de suas vidas.`
+          },
+          {
+            titulo: 'CAPÍTULO 3 — A VIAGEM PARA OUTRO PAÍS',
+            texto: `Antigalesma e Yekapy começaram a investigar o desaparecimento.
+Procuraram em jardins, florestas, cavernas, cidades e até em antigos esconderijos de caramujos. Perguntaram aos moradores se alguém tinha visto três gatos carregando filhotes, mas ninguém sabia de nada.
+Depois de muitas tentativas, Yekapy teve uma ideia.
+— Talvez eles tenham levado nossos filhos para outro país!
+Antigalesma pensou por alguns segundos.
+— Você tem razão! Os gatos podem estar tentando nos fazer procurar no lugar errado.
+Os dois decidiram viajar até o País dos Caramujos, a terra de origem de Yekapy.
+Eles conseguiram um pequeno avião particular, com espaço suficiente para os dois viajantes e alguns equipamentos de busca.
+Depois de prepararem tudo, embarcaram.
+O avião decolou e atravessou as nuvens enquanto Antigalesma observava a paisagem pela janela.
+— Espero que nossos filhos estejam bem... — disse ela, preocupada.
+Yekapy segurou sua pata.
+— Vamos encontrá-los. Eu prometo.
+Após algumas horas de viagem, chegaram ao País dos Caramujos.
+Assim que desembarcaram, começaram a procurar.
+Visitaram antigas casas, jardins abandonados, depósitos e regiões cheias de pedras.
+Mas não encontraram absolutamente nada.
+Antigalesma estava quase perdendo as esperanças.
+— E se eles não estiverem aqui? E se estivermos procurando no lugar errado?
+Yekapy respirou profundamente.
+— Então voltaremos ao nosso país e procuraremos novamente. Não vamos parar.
+Os dois embarcaram no pequeno avião e voltaram para casa.`
+          },
+          {
+            titulo: 'CAPÍTULO 4 — O SEGREDO ATRÁS DOS VASOS',
+            texto: `Quando chegaram ao seu país, Antigalesma e Yekapy estavam cansados depois de tantas viagens.
+Mesmo assim, decidiram continuar a busca.
+Dessa vez, resolveram examinar cuidadosamente cada canto da própria propriedade, inclusive lugares que já haviam verificado antes.
+Antigalesma começou pelos vasos de plantas.
+Olhou atrás de um vaso grande.
+Nada.
+Verificou perto de algumas pedras.
+Nada.
+Depois, caminhou até o fundo do jardim, onde havia uma área escondida por plantas altas e rochas.
+Foi então que ouviu um som baixinho.
+— Mamãe...?
+Antigalesma parou imediatamente.
+Ela conhecia aquela voz!
+— Filhotes?!
+A mãe afastou cuidadosamente algumas folhas e olhou atrás de um conjunto de vasos.
+E lá estavam eles!
+Todos os seus filhotes estavam escondidos juntos, encolhidos atrás das pedras. Estavam assustados e com frio, então permaneciam bem juntinhos para se manter aquecidos.
+Quando viram a mãe, seus olhos se iluminaram.
+— MAMÃE!
+Antigalesma ficou emocionada. Lágrimas de felicidade escorreram enquanto ela se aproximava dos filhos.
+— MEUS PEQUENINOS! EU ENCONTREI VOCÊS!
+Os filhotes correram para perto dela, reunindo-se em um grande abraço de família.
+Yekapy chegou logo depois e ficou aliviado ao ver que todos estavam juntos.
+— Meus filhos! Finalmente!
+Antigalesma chorava de felicidade, abraçando cada um deles.
+Apesar do alívio, ainda havia algo que precisava ser resolvido.
+Os gatos tinham levado os filhotes e deixado toda a família desesperada.
+Yekapy olhou para o horizonte e disse:
+— Calma, Antigalesma. Eu prometo que vou derrotar esses gatos maldosos. Eles nunca mais vão fazer isso com nossa família!`
+          },
+          {
+            titulo: 'CAPÍTULO 5 — OS FILHOTES CRESCERAM',
+            texto: `Depois de reencontrarem os filhotes, Antigalesma e Yekapy cuidaram deles e ajudaram todos a recuperar a tranquilidade.
+Os filhotes contaram que haviam passado muito tempo escondidos e que sentiram muito medo enquanto estavam longe dos pais.
+A família permaneceu unida, e os dias passaram.
+Com o tempo, os filhotes cresceram e se tornaram adolescentes.
+Agora, estavam maiores, mais fortes e muito mais experientes. Também haviam aprendido diversas coisas com os pais durante as aventuras da família.
+Um dia, um dos filhos perguntou:
+— Pai, você ainda vai atrás daqueles gatos?
+Yekapy respondeu:
+— Sim. Eles precisam entender que não podem sequestrar outros seres e depois simplesmente fugir.
+Outro filhote se aproximou.
+— Então nós vamos com você!
+Antigalesma ficou surpresa.
+— Vocês têm certeza? Não quero que ninguém se coloque em perigo.
+O filho mais velho respondeu:
+— Mãe, nós já crescemos. Eles fizeram mal à nossa família. Queremos ajudar a impedir que façam isso com outras famílias também.
+Yekapy olhou para os filhos, orgulhoso.
+— Muito bem. Mas vamos agir juntos e manter a cabeça no lugar.
+A família começou a preparar-se para confrontar a Tropa dos Gatos.
+Dessa vez, Antigalesma e Yekapy não estariam sozinhos.`
+          },
+          {
+            titulo: 'CAPÍTULO 6 — O CONFRONTO FINAL',
+            texto: `Finalmente, chegou o dia do confronto.
+Zokri, Deyna e Sontrak estavam em uma clareira, convencidos de que os pais nunca conseguiriam encontrá-los.
+Zokri estava descansando quando ouviu uma voz.
+— ZOKRI!
+Ele virou a cabeça e arregalou os olhos.
+Antigalesma, Yekapy e seus filhos adolescentes estavam diante dele!
+Deyna levantou-se rapidamente.
+— Como vocês nos encontraram?!
+Yekapy respondeu:
+— Vocês cometeram um erro. Pensaram que poderiam assustar nossa família e que nós simplesmente desistiríamos.
+Sontrak soltou uma risada.
+— São vocês contra nós três? Isso vai ser fácil!
+Mas ele não sabia que os filhotes já tinham crescido.
+Antigalesma avançou, com as espirais de fogo brilhando em sua carapaça. Yekapy usou sua enorme força para impedir que os gatos cercassem a família, enquanto os filhos ajudavam os pais a enfrentar os vilões.
+A clareira ficou cheia de movimentos, corridas e confrontos.
+Zokri tentou enganar Antigalesma, mas ela percebeu sua estratégia.
+Deyna tentou fugir pelo lado da clareira, mas um dos filhotes bloqueou seu caminho.
+Sontrak tentou intimidar Yekapy com seu tamanho e suas ameaças, mas o caramujo não recuou.
+— Você pode tentar me assustar o quanto quiser! Eu não vou deixar que machuquem minha família novamente!
+A família lutou em conjunto, usando coragem, inteligência e trabalho em equipe.
+Os gatos começaram a perceber que tinham subestimado seus adversários.
+— Isso não pode estar acontecendo! — reclamou Zokri.
+Um dos filhos de Antigalesma respondeu:
+— Vocês acharam que nossa família era fraca. Agora descobriram que juntos somos muito mais fortes!
+Depois de uma longa batalha, a Tropa dos Gatos foi derrotada.
+Zokri, Deyna e Sontrak recuaram, assustados e cansados.
+— Vamos embora! — gritou Zokri.
+Os três gatos fugiram da clareira e desapareceram entre as árvores.
+A família não os perseguiu. O importante era que todos estavam juntos e que os gatos não tinham mais condições de ameaçá-los naquele momento.
+Yekapy aproximou-se de Antigalesma e dos filhos.
+— Conseguimos!
+Antigalesma sorriu, emocionada.
+— Conseguimos porque lutamos juntos!
+Os adolescentes comemoraram a vitória ao lado dos pais.`
+          },
+          {
+            titulo: 'CAPÍTULO 7 — A FAMÍLIA ACIMA DE TUDO',
+            texto: `Depois da batalha, Antigalesma e Yekapy voltaram para casa com seus filhos.
+A notícia da derrota da Tropa dos Gatos espalhou-se rapidamente pelo País dos Caracóis e pelo País dos Caramujos.
+Os habitantes comemoraram, pois os três gatos haviam se tornado conhecidos por ameaçar famílias e causar confusão.
+Antigalesma reuniu os filhos no jardim e disse:
+— Quero que vocês se lembrem de uma coisa: nossa maior força não está apenas nas carapaças, no tamanho ou nos poderes. Está na maneira como cuidamos uns dos outros.
+Yekapy concordou.
+— E nunca se esqueçam de que pedir ajuda não é sinal de fraqueza. Quando nossa família se uniu, conseguimos superar uma situação que parecia impossível.
+Os filhotes abraçaram os pais.
+A carapaça de Antigalesma voltou a brilhar sob a luz do sol, e suas espirais mágicas se movimentaram suavemente.
+Depois de tantas dificuldades, a família finalmente podia descansar.
+Mas, em algum lugar distante, Zokri, Deyna e Sontrak ainda estavam juntos, planejando o que fariam depois daquela derrota.
+A Tropa dos Gatos havia fugido, mas a história de Antigalesma e Yekapy ainda não tinha terminado.
+FIM DO FILME 3.`
+          }
+        ]
+      },
+      {
+        id: 'filme-4',
+        titulo: 'ZINAR 4: WOLF-MUJO, O GUARDIÃO DAS ESPIRAIS NEON',
+        capitulos: [
+          {
+            titulo: 'CAPÍTULO 1 — A AMEAÇA DOS HUMANOS',
+            texto: `Depois que os gatos Zokri, Deyna e Sontrak foram derrotados, Antigalesma, Yekapy e seus filhos acreditavam que finalmente poderiam viver em paz.
+Mas, em outro lugar, um grupo de humanos descobriu a existência de Antigalesma e Yekapy. Eles ficaram interessados nas carapaças especiais da família e decidiram capturá-los para ganhar uma recompensa de R$ 1 milhão.
+Os humanos começaram a procurar a família por toda parte.
+Enquanto isso, Antigalesma estava cuidando de suas carapaças, Yekapy observava os arredores e os filhos brincavam perto das plantas.
+De repente, um caramujo apareceu no jardim.
+Ele era completamente branco, tinha uma carapaça com espirais roxas de neon que se movimentavam em zigue-zague e possuía uma aparência impressionante.
+Seu nome era Wolf-Mujo.
+— Vocês precisam sair daqui! — avisou ele. — Alguns humanos estão procurando vocês!
+Antigalesma ficou desconfiada.
+— Como podemos saber se você está falando a verdade?
+Wolf-Mujo respondeu:
+— Vocês não precisam acreditar em mim imediatamente. Mas, se ficarem aqui, poderão ser encontrados.`
+          },
+          {
+            titulo: 'CAPÍTULO 2 — O ESCONDERIJO REFORÇADO',
+            texto: `Wolf-Mujo levou a família até um abrigo reforçado, construído especialmente para proteger caracóis, caramujos e lesmas.
+O lugar tinha paredes resistentes, portas reforçadas, suprimentos e espaço suficiente para todos descansarem.
+Yekapy examinou o local.
+— Parece seguro, mas ainda não sei se podemos confiar em você.
+Wolf-Mujo não discutiu. Apenas ajudou a família a entrar e verificou se todos estavam protegidos.
+Pouco tempo depois, os humanos chegaram ao jardim vazio.
+Eles encontraram algumas pistas e descobriram a localização aproximada do abrigo.
+Ao chegarem lá, começaram a bater na porta, exigindo que a família saísse.
+Os filhos ficaram assustados e se aproximaram dos pais.
+— Não vamos deixar ninguém levar vocês — prometeu Antigalesma.
+Wolf-Mujo apontou para uma saída de emergência.
+— Venham comigo! Existe outro caminho.
+A família seguiu o guardião por um corredor protegido e conseguiu sair do abrigo sem ser capturada.`
+          },
+          {
+            titulo: 'CAPÍTULO 3 — A FUGA DE AVIÃO',
+            texto: `Do lado de fora, Wolf-Mujo conduziu todos até um pequeno avião particular preparado para transportar a família.
+Antigalesma olhou para ele, ainda desconfiada.
+— Para onde estamos indo?
+— Para um país distante, onde existem comunidades protegidas de caracóis, caramujos e lesmas — explicou Wolf-Mujo. — Lá, vocês poderão ficar longe desses humanos.
+Yekapy ajudou os filhos a embarcar.
+Quando todos estavam acomodados, o avião decolou.
+Durante a viagem, Antigalesma observou sua carapaça roxa, prateada e azul pela janela.
+Ela estava preocupada com o futuro da família.
+Yekapy aproximou-se dela.
+— Vamos superar isso juntos.
+Os filhos também se aproximaram dos pais, e a família permaneceu unida durante o restante da viagem.
+Depois de algumas horas, o avião pousou em um país distante.`
+          },
+          {
+            titulo: 'CAPÍTULO 4 — O PAÍS DOS CARACÓIS',
+            texto: `O lugar era bonito e tranquilo. Havia jardins, árvores, pequenas casas e construções adaptadas para diferentes espécies.
+Ali viviam muitas famílias de caracóis, caramujos e lesmas. Algumas tinham filhos pequenos, enquanto outras cuidavam de adolescentes que brincavam e exploravam os jardins.
+Quando a família de Antigalesma chegou, vários moradores vieram recebê-los.
+Uma caramuja explicou:
+— Wolf-Mujo já ajudou muitas famílias a encontrar lugares seguros. Ele conhece muito bem esta região.
+Outro morador acrescentou:
+— Ele também costuma avisar as comunidades quando alguém está em perigo.
+Antigalesma e Yekapy trocaram olhares.
+Talvez tivessem julgado Wolf-Mujo rápido demais.
+Mesmo assim, ainda queriam conversar com ele para entender tudo o que havia acontecido.`
+          },
+          {
+            titulo: 'CAPÍTULO 5 — A VERDADE SOBRE WOLF-MUJO',
+            texto: `Naquela tarde, Antigalesma encontrou Wolf-Mujo perto de um jardim cheio de plantas.
+— Precisamos conversar com você — disse ela.
+Wolf-Mujo parou e escutou.
+Yekapy começou:
+— No início, pensamos que você poderia estar escondendo alguma coisa. Não sabíamos por que estava nos ajudando.
+Wolf-Mujo respondeu tranquilamente:
+— Eu entendo. Vocês estavam ameaçados e não tinham motivos para confiar em alguém que acabaram de conhecer.
+Antigalesma olhou para as espirais roxas de neon que se movimentavam pela carapaça dele.
+— Você nos avisou sobre os humanos, encontrou um abrigo e nos trouxe até aqui. Se não fosse por você, talvez tivéssemos sido capturados.
+Ela abaixou um pouco a cabeça.
+— Desculpe por termos desconfiado tanto de você.
+Yekapy também pediu desculpas.
+Wolf-Mujo aceitou o pedido.
+— Não precisam se preocupar. O importante é que vocês estão seguros agora.
+Naquele momento, a família percebeu que Wolf-Mujo não queria recompensa nem reconhecimento. Ele simplesmente gostava de proteger aqueles que precisavam de ajuda.`
+          },
+          {
+            titulo: 'CAPÍTULO 6 — O CONVITE INESPERADO',
+            texto: `Alguns dias depois, Antigalesma e Yekapy tiveram uma ideia.
+Eles chamaram Wolf-Mujo para conversar com toda a família.
+— Temos uma proposta para você — disse Antigalesma.
+Wolf-Mujo ficou curioso.
+Yekapy explicou:
+— Queremos que você seja o nosso guardião oficial e responsável pela proteção da família.
+Os filhos comemoraram.
+— Isso mesmo! Você nos ajudou quando estávamos com medo! — disseram eles.
+Antigalesma continuou:
+— Não queremos que você faça tudo sozinho. Queremos trabalhar juntos, ajudar uns aos outros e manter nossa família protegida.
+Wolf-Mujo ficou emocionado com o convite.
+— Eu aceito! Será uma honra proteger vocês.
+As espirais roxas de neon de sua carapaça começaram a se movimentar mais rapidamente, formando desenhos luminosos.
+Os filhos ficaram encantados.
+— Suas espirais são incríveis!
+Wolf-Mujo sorriu e respondeu:
+— Cada um de nós tem suas próprias características. O mais importante é o que fazemos com elas.`
+          },
+          {
+            titulo: 'CAPÍTULO 7 — UMA NOVA VIDA',
+            texto: `Com Wolf-Mujo como guardião, a família começou uma nova etapa.
+Antigalesma continuou cuidando de sua carapaça especial, mantendo suas cores roxas, prateadas e azuis.
+Yekapy passou a ajudar os outros moradores da comunidade, enquanto os filhos fizeram novos amigos e conheceram os jardins do país.
+Wolf-Mujo ajudava a organizar a proteção da comunidade, verificava os abrigos e avisava os moradores quando surgia algum problema.
+A família também começou a ajudar outros caracóis, caramujos e lesmas que chegavam procurando segurança.
+Certo dia, Antigalesma observou as crianças brincando e comentou:
+— No começo, só queríamos proteger nossa própria família. Agora, podemos ajudar muitas outras também.
+Yekapy concordou.
+— E aprendemos que nem todo desconhecido é um inimigo. Às vezes, ele pode se tornar um grande amigo.
+Wolf-Mujo, que estava por perto, ouviu a conversa.
+— E eu aprendi que proteger alguém também significa conquistar sua confiança.`
+          },
+          {
+            titulo: 'CAPÍTULO 8 — O GUARDIÃO DAS ESPIRAIS NEON',
+            texto: `Para agradecer a Wolf-Mujo, os moradores organizaram uma celebração.
+As famílias se reuniram no jardim principal, decorado com pequenas luzes e plantas coloridas.
+Antigalesma e Yekapy fizeram um agradecimento diante de todos.
+— Wolf-Mujo nos ajudou quando estávamos em perigo. Ele nos mostrou que a coragem não significa nunca sentir medo, mas continuar ajudando mesmo quando as coisas ficam difíceis.
+Os moradores aplaudiram.
+Wolf-Mujo ficou ao lado da família, com suas espirais roxas de neon brilhando suavemente.
+Os filhos se aproximaram dele.
+— Você agora faz parte da nossa família!
+Wolf-Mujo respondeu:
+— E vocês podem contar comigo.
+Naquela noite, Antigalesma, Yekapy, seus filhos e Wolf-Mujo observaram o céu tranquilo.
+A família finalmente tinha encontrado um lugar onde poderia viver sem precisar fugir o tempo todo.
+E assim, o caramujo branco das espirais neon ficou conhecido como Wolf-Mujo, o Guardião das Espirais Neon, um protetor que não buscava fama nem dinheiro, mas queria garantir que outras famílias também pudessem viver em paz.
+FIM DO FILME 4.`
+          }
+        ]
+      },
+      {
+        id: 'filme-5',
+        titulo: 'ZINAR 5: ZACREN DE SILVANIO — A BATALHA DOS GIGANTES',
+        capitulos: [
+          {
+            titulo: 'CAPÍTULO 1 — O APARECIMENTO DO GIGANTÃO',
+            texto: `Depois dos acontecimentos do quarto filme, Antigalesma, Yekapy, seus filhos e Wolf-Mujo viviam tranquilamente no país dos caracóis, dos caramujos e das lesmas.
+Wolf-Mujo continuava sendo o guardião oficial da comunidade. Além de proteger as famílias, ele era especialista em engenharia e adorava criar projetos para melhorar as cidades.
+Mas, certa manhã, algo gigantesco apareceu no horizonte.
+Era um caracol branco, do tamanho de uma casa inteira e ainda mais alto. Seu corpo era completamente branco, e sua enorme carapaça estava coberta de rachaduras que brilhavam em roxo neon.
+Seu nome era Zacren de Silvanio.
+Ele avançava lentamente em direção à cidade, fazendo o chão tremer a cada movimento.
+Os caracóis que estavam nas ruas pararam para observar.
+— Olhem o tamanho dele!
+— É um caracol gigante!
+— Rápido, tirem fotos!
+Centenas de moradores começaram a fotografar Zacren. Outros gravavam vídeos para mostrar o gigantão aos amigos.
+Mas alguns moradores olharam para as fotografias e se confundiram.
+— Espera aí! Esse não é o Wolf-Mujo?
+— Parece ele, só que muito maior!
+— Não! Olhem as rachaduras roxas na carapaça! É outra criatura!
+Quando Wolf-Mujo soube da chegada do gigante, foi imediatamente investigar.
+Ao ver Zacren de Silvanio, percebeu que aquele encontro não seria nada tranquilo.`
+          },
+          {
+            titulo: 'CAPÍTULO 2 — O VILÃO REVELA SUAS INTENÇÕES',
+            texto: `Zacren chegou à praça principal e observou as construções ao redor.
+— Então este é o famoso país dos caracóis... — declarou ele.
+Wolf-Mujo posicionou-se diante do gigante.
+— Quem é você e o que veio fazer aqui?
+Zacren inclinou a cabeça.
+— Meu nome é Zacren de Silvanio. E, a partir de hoje, este país vai conhecer o meu poder!
+— Você não precisa ameaçar ninguém — respondeu Wolf-Mujo. — Aqui vivem famílias que só querem ficar em paz.
+Zacren soltou uma risada e avançou, derrubando parte de uma construção vazia.
+Os moradores começaram a fugir para lugares seguros.
+Wolf-Mujo percebeu que precisava impedir o gigantão antes que ele destruísse ainda mais a cidade.
+— Se você quer enfrentar alguém, vai ter que passar por mim!
+Zacren virou-se para ele.
+— Então venha, pequeno guardião!
+E assim começou uma das batalhas mais inesquecíveis da história daquele país.`
+          },
+          {
+            titulo: 'CAPÍTULO 3 — A LUTA DOS GIGANTES',
+            texto: `Wolf-Mujo e Zacren de Silvanio começaram a lutar no centro de uma grande área aberta.
+Mesmo sendo muito menor que Zacren, Wolf-Mujo era ágil, inteligente e conhecia bem o terreno.
+Zacren avançou com toda a sua força, mas Wolf-Mujo conseguiu desviar. O gigante atingiu o solo e provocou uma onda de tremores que sacudiu as construções próximas.
+Wolf-Mujo respondeu empurrando o adversário para longe das áreas residenciais.
+Os dois atravessaram uma região industrial abandonada, derrubando estruturas vazias e levantando enormes nuvens de poeira.
+A carapaça de Zacren brilhava intensamente. Suas rachaduras roxas pareciam linhas de neon acesas durante a noite.
+Wolf-Mujo também brilhava, com suas espirais roxas movimentando-se em zigue-zague.
+Por alguns instantes, os dois ficaram frente a frente.
+— Você é pequeno demais para me derrotar! — gritou Zacren.
+— Tamanho não é a única coisa que importa — respondeu Wolf-Mujo.
+Zacren avançou novamente.
+Wolf-Mujo saltou para o lado e usou o impulso do adversário para fazê-lo perder o equilíbrio. O gigante caiu sobre uma área desocupada, provocando um estrondo que foi ouvido a quilômetros de distância.
+Os moradores acompanhavam tudo de longe, protegidos em abrigos.
+Era uma luta como ninguém jamais havia visto.`
+          },
+          {
+            titulo: 'CAPÍTULO 4 — METADE DO PAÍS DEVASTADA',
+            texto: `A batalha continuou por muito tempo.
+Os dois gigantes se deslocaram por diferentes regiões, e os estragos aumentaram.
+Prédios vazios foram derrubados, estradas ficaram danificadas e inúmeras casas foram destruídas. Algumas cidades precisaram ser completamente evacuadas.
+Wolf-Mujo tentava afastar Zacren das áreas habitadas, mas o vilão continuava avançando.
+Quando a luta finalmente chegou a uma região distante, quase metade do país estava devastada.
+Onde antes havia bairros, praças e construções, agora existiam terrenos destruídos, estradas interrompidas e grandes áreas cobertas por vegetação e destroços.
+Felizmente, muitos moradores conseguiram chegar a locais seguros antes que a batalha atingisse suas casas.
+Antigalesma, Yekapy e seus filhos também ajudaram a orientar as famílias para longe das regiões perigosas.
+— Precisamos confiar no Wolf-Mujo — disse Yekapy. — Ele sabe o que está fazendo.
+Antigalesma olhou para o horizonte.
+— Ele precisa vencer. Não podemos deixar Zacren destruir o restante do país.
+Enquanto isso, Wolf-Mujo estava cansado, mas não havia desistido.
+Ele sabia que precisava encontrar uma maneira de terminar aquela batalha.`
+          },
+          {
+            titulo: 'CAPÍTULO 5 — O ÚLTIMO CONFRONTO',
+            texto: `Zacren de Silvanio estava convencido de que já havia vencido.
+Ele observou a região devastada e declarou:
+— Veja só! Quase metade do país foi destruída! Você nunca conseguirá me impedir!
+Wolf-Mujo respirou fundo.
+— Talvez eu não consiga reconstruir tudo sozinho. Mas não preciso fazer tudo sozinho.
+O guardião havia percebido uma coisa importante: Zacren era enorme e poderoso, mas também era arrogante. Durante a luta, o gigante se preocupava tanto em demonstrar força que deixava de prestar atenção aos movimentos do adversário.
+Wolf-Mujo usou sua agilidade para conduzi-lo até uma ampla área aberta, longe das cidades.
+Zacren tentou atingi-lo mais uma vez, mas Wolf-Mujo desviou no momento certo.
+O gigante perdeu o equilíbrio.
+Antes que pudesse se recuperar, Wolf-Mujo usou todo o impulso que havia guardado durante a batalha para derrubá-lo completamente.
+BUM!
+Zacren caiu no chão, levantando uma enorme nuvem de poeira.
+Wolf-Mujo manteve-se firme diante dele.
+O vilão tentou se levantar, mas estava exausto e já não conseguia continuar lutando.
+— Como você conseguiu me derrotar? — perguntou Zacren.
+Wolf-Mujo respondeu:
+— Porque eu não lutei apenas com força. Observei seus movimentos, pensei e continuei protegendo aquilo que importa.
+Zacren finalmente admitiu a derrota.
+Wolf-Mujo havia vencido!
+Os moradores comemoraram a vitória do guardião, mas sabiam que ainda havia muito trabalho pela frente.
+O país precisava ser reconstruído.`
+          },
+          {
+            titulo: 'CAPÍTULO 6 — O ENGENHEIRO ENTRA EM AÇÃO',
+            texto: `Depois da batalha, Wolf-Mujo voltou à comunidade e reuniu os moradores.
+— Nós vencemos Zacren, mas não podemos deixar as famílias sem casas. Vamos reconstruir nosso país!
+Como era especialista em engenharia, Wolf-Mujo começou a elaborar projetos para reconstruir bairros, estradas, pontes, praças e edifícios.
+Ele também chamou alguns amigos engenheiros, construtores e arquitetos de outras comunidades.
+Todos aceitaram ajudar.
+Durante os dias seguintes, equipes começaram a trabalhar nas regiões atingidas.
+Alguns reconstruíam as casas. Outros limpavam as estradas, recuperavam as pontes e planejavam novos bairros.
+Wolf-Mujo supervisionava os projetos e ajudava a encontrar soluções para os problemas mais difíceis.
+Antigalesma e Yekapy organizaram grupos para distribuir alimentos e ajudar as famílias que haviam perdido suas casas.
+Os filhos também participaram, levando materiais leves e ajudando a organizar os espaços comunitários.
+Aos poucos, o país começou a recuperar sua aparência.`
+          },
+          {
+            titulo: 'CAPÍTULO 7 — UM PAÍS AINDA MAIOR',
+            texto: `Wolf-Mujo percebeu que aquela reconstrução poderia ser uma oportunidade para melhorar o país.
+Em vez de simplesmente reconstruir tudo exatamente como era antes, ele propôs ampliar algumas regiões e criar novos bairros.
+Os moradores concordaram com o projeto.
+Foram construídas novas áreas residenciais, parques, jardins, centros de convivência e estradas mais bem planejadas.
+Algumas regiões foram ampliadas para receber mais famílias, enquanto outras ganharam espaços verdes e áreas protegidas.
+As cidades que haviam sido destruídas começaram a renascer.
+O país ficou maior em algumas partes, mais organizado e preparado para enfrentar futuras dificuldades.
+Quando a reconstrução terminou, os moradores fizeram uma grande celebração.
+Todos agradeceram a Wolf-Mujo e aos amigos que haviam trabalhado ao seu lado.
+— Você nos protegeu durante a batalha e depois nos ajudou a construir um futuro melhor — disse Antigalesma.
+Wolf-Mujo respondeu:
+— Eu fui apenas uma parte disso. Este país foi reconstruído porque todos vocês trabalharam juntos.`
+          },
+          {
+            titulo: 'CAPÍTULO 8 — A LENDA DE ZACREN DE SILVANIO',
+            texto: `Algum tempo depois, o país voltou a viver tranquilamente.
+As novas casas estavam ocupadas, os jardins floresciam e as ruas estavam cheias de moradores novamente.
+Wolf-Mujo continuou sendo o guardião oficial e também passou a ser conhecido como um dos maiores engenheiros da história do país.
+Zacren de Silvanio nunca foi esquecido. Sua chegada, as rachaduras roxas de neon em sua carapaça e a batalha colossal contra Wolf-Mujo tornaram-se parte das histórias contadas pelas famílias.
+A luta havia sido longa, intensa e inesquecível.
+Mas a maior conquista de Wolf-Mujo não foi apenas derrotar um gigante.
+Foi mostrar que, mesmo depois de uma grande destruição, a união, a inteligência e o trabalho em equipe podem ajudar uma comunidade a recomeçar.
+E assim, Antigalesma, Yekapy, seus filhos, Wolf-Mujo e os demais moradores viveram felizes naquele país reconstruído, que agora era ainda maior em algumas regiões e estava cheio de novas possibilidades.
+E VIVERAM EM PAZ PARA SEMPRE!
+
+FIM DO FILME 5.`
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'serie-3',
+    nome: 'Série 3 — Os Caracóis Espertos',
+    filmes: [
+      {
+        id: 'filme-1',
+        titulo: 'OS CARACÓIS ESPERTOS',
+        capitulos: [
+          {
+            titulo: 'CAPÍTULO 1 — A GRANDE CAÇADA',
+            texto: `Cena 1 — A contratação
+
+O humano Zeta reuniu 10 mil humanos para fazer uma proposta.
+
+Humano Zeta: Vocês foram contratados para eliminar todos os caracóis do mundo!
+
+10 mil humanos: E daí?
+
+Humano Zeta: É que vocês vão ganhar um milhão de reais se matarem todos os caracóis!
+
+10 mil humanos: 👏👏👏
+
+Cena 2 — A caçada começa
+
+Depois da proposta, todos os 10 mil humanos saíram pelas ruas para caçar todos os caracóis do mundo!
+
+A grande perseguição estava começando!
+
+FIM DO CAPÍTULO 1.`
+          },
+          {
+            titulo: 'CAPÍTULO 2 — O HUMANO DO BEM',
+            texto: `Cena 1 — A proposta dos humanos
+
+Um humano do bem encontrou um dos 10 mil humanos contratados para caçar os caracóis.
+
+Humano do bem: Ei, o que você vai fazer?
+
+Humano do mal: A gente foi contratado pra ganhar um milhão de reais pra matar os caracóis de todo mundo. Aceita?
+
+Humano do bem (mentindo): Não, eu não quero! Eu não vou aceitar, não, porque no meu salário atual eu ganho 10 mil por mês!
+
+Cena 2 — A reunião secreta no bunker
+
+Os caracóis estavam reunidos em um bunker onde só eles conseguiam entrar.
+
+Caracol Zoki (capitão): Gente, aqui no meu rastreador, na minha carapaça, está falando que os humanos querem nos matar!
+
+Caracol Roky: Cara, a gente tem que ficar aqui dentro pra eles não nos matarem!
+
+Caracol Jokha: Claro que não, Roky! Você tá atrapalhando tudo! A gente tem que jogar suriquense, só que de caracol, neles!
+
+Caracol Yotho: Não, seu burro! A gente tem que ir na fábrica e pegar o foguete, ativar e fazer ele bater no chão! E quando bater no chão, vai explodir tudo, vai matar os humanos e só vai ficar a gente aqui!
+
+Caracol Zoki (capitão): Isso mesmo, Yotho!
+
+Cena 3 — O encontro inesperado
+
+Os caracóis saíram do bunker e foram para a rua.
+
+Quando olharam para cima, viram um humano gigantesco diante deles!
+
+Caracol Jokha: AAAAAAH!!!!
+
+Humano do bem: Para! Não grita, não! Eles estão vindo! Eu vou ajudar vocês, eu sou do bem!
+
+Caracol Zoki: Então, é... então você tem que passar pelos tes—
+
+Humano do bem: A gente não tem muito tempo! Vamos!
+
+FIM DO CAPÍTULO 2.`
+          },
+          {
+            titulo: 'CAPÍTULO 3 — A FUGA NA FÁBRICA',
+            texto: `Cena 1 — A perseguição
+
+Enquanto fugiam, o humano do bem tropeçou e caiu no chão!
+
+Os caracóis rapidamente se esconderam dentro de suas carapaças para sobreviver ao impacto da queda.
+
+Mas os humanos do mal já estavam atrás dele!
+
+Humano do mal: Ei! É melhor você ficar esperto, hein? Porque, se você estiver escondendo eles de nós, vai levar uma surra!
+
+O humano do bem rapidamente pegou os caracóis e colocou todos dentro da própria roupa para escondê-los.
+
+Ele estava machucado por causa da queda. Seus cotovelos tinham batido no chão.
+
+Mesmo assim, conseguiu se levantar.
+
+De repente, ele deu um socão no humano do mal e saiu correndo!
+
+Caracol Jokha: O que que ele tá fazendo?
+
+Caracol Roky: Deve estar acontecendo alguma coisa com ele.
+
+Cena 2 — A fábrica dos foguetes
+
+O humano do bem finalmente chegou à fábrica e colocou os caracóis no chão.
+
+Humano do bem: Olha, olha, vou deixar vocês aqui, né, pra vocês fugirem e ativarem o foguete. Mas quando os humanos do mal virem vocês pra matar vocês, eu já vou estar lá em cima no teto, onde fica a ventilação, e eu tô com a minha arma de gosma. Aí eu vou atirar neles, vai ter gosma pra todo lado e eles vão ficar presos!
+
+O plano parecia perfeito!
+
+Os caracóis começaram a correr por toda a fábrica até encontrar os foguetes.
+
+Só que os humanos do mal encontraram os caracóis!
+
+Eles se aproximaram para capturá-los.
+
+Com medo, os caracóis ativaram seus espinhos de defesa!
+
+Quando um dos humanos tentou pegar um caracol, sua mão ficou cheia de espinhos!
+
+Humano do mal: AAAAAH! MINHA MÃO!
+
+Outros humanos apareceram com redes de caça.
+
+Mas o humano do bem estava escondido na tubulação de ventilação, lá em cima no teto!
+
+PLOFT! PLOFT! PLOFT!
+
+Ele começou a disparar sua arma de gosma!
+
+Os humanos do mal ficaram presos no chão!
+
+Humana do mal Zamy: PEGUEM OS CARACÓIS!
+
+Três humanos que ainda não estavam presos correram atrás dos caracóis.
+
+Mas eles não sabiam que o humano do bem continuava escondido na tubulação!
+
+PLOFT! PLOFT! PLOFT!
+
+Ele disparou mais gosma!
+
+Os três humanos também ficaram grudados no chão!
+
+Depois disso, o humano do bem desceu da tubulação.
+
+Ele saltou de uma altura enorme e conseguiu cair em pé!
+
+Então começou a disparar gosma contra todos os humanos restantes!
+
+Cena 3 — A sala secreta
+
+De repente, apareceu um humano do mal extremamente ágil!
+
+Ele conseguia desviar de todos os disparos de gosma!
+
+O humano do bem percebeu que precisava fugir imediatamente.
+
+Pegou todos os caracóis, colocou-os dentro da roupa e saiu correndo pelos corredores da fábrica!
+
+Até encontrar uma sala protegida por senha!
+
+SISTEMA DE SEGURANÇA:
+Digite a senha para entrar.
+SENHA: Z4hx57kyZ
+
+O humano do bem tentou várias e várias vezes.
+
+Até que finalmente conseguiu!
+
+SISTEMA: ACESSO AUTORIZADO!
+
+A porta se abriu!
+
+O humano do bem entrou rapidamente com todos os caracóis, fechou a porta e cadastrou uma senha nova para impedir que os perseguidores entrassem!
+
+FIM DO CAPÍTULO 3.`
+          },
+          {
+            titulo: 'CAPÍTULO 4 — A EXPLOSÃO DO FOGUETE',
+            texto: `Cena 1 — Encurralados!
+
+A sala secreta tinha um corredor que levava diretamente até um foguete.
+
+Mas, lá atrás, na porta, o humano do bem começou a ouvir batidas muito fortes!
+
+BAM! BAM! BAM!
+
+Eram os humanos do mal tentando arrombar a porta!
+
+O humano do bem percebeu que estava em apuros.
+
+Não havia outro lugar por onde sair!
+
+Eles estavam encurralados!
+
+De repente...
+
+CRAAAAASH!
+
+Os humanos do mal arrombaram a porta!
+
+Eles correram para pegar os caracóis!
+
+Só que dessa vez não estavam usando redes de caça.
+
+Agora estavam usando armas de gosma perigosas, feitas para capturar e eliminar os caracóis!
+
+Um dos humanos do mal disparou contra o capitão Zoki!
+
+PLOFT!
+
+Zoki ficou preso na gosma!
+
+Caracol Zoki: NÃO! SOCORRO!
+
+O humano do bem correu até Zoki, pegou o caracol, limpou toda a gosma e derrubou o humano do mal!
+
+Então falou para os caracóis:
+
+Humano do bem: Caracóis, vocês tentam ativar aí o foguete, enquanto eu vou lutar com os humanos do mal!
+
+Cena 2 — A contagem regressiva
+
+Os caracóis correram até o painel de controle do foguete!
+
+Eles conseguiram ativá-lo!
+
+SISTEMA DO FOGUETE:
+AUTODESTRUIÇÃO ATIVADA!
+TEMPO RESTANTE: 01:00
+
+O foguete explodiria em apenas um minuto!
+
+Enquanto isso, o humano do bem começou a lutar contra os humanos do mal!
+
+Ele disparou sua arma de gosma!
+
+PLOFT! PLOFT!
+
+Os humanos do mal ficaram presos, mas conseguiram se levantar!
+
+O humano do bem deu um chute em um deles!
+
+O humano do mal respondeu com um soco!
+
+O humano do bem também deu um soco!
+
+Depois deu outro chute!
+
+A briga continuou enquanto o foguete se aproximava da explosão!
+
+Cena 3 — Os últimos cinco segundos
+
+De repente, o alarme começou a tocar!
+
+SISTEMA DO FOGUETE:
+PERIGO! EXPLOSÃO IMINENTE!
+TEMPO RESTANTE: 00:05
+
+Os humanos do mal começaram a correr!
+
+Mas perceberam que não havia tempo suficiente para escapar!
+
+Os caracóis rapidamente entraram em suas carapaças!
+
+5...
+4...
+3...
+2...
+1...
+
+💥 BOOOOOOOOOOOM!!!
+
+O foguete explodiu com uma força gigantesca!
+
+A explosão foi tão poderosa que eliminou praticamente todos os humanos do mundo!
+
+Parecia que ninguém tinha sobrevivido!
+
+Cena 4 — O mundo dos caracóis
+
+Depois da explosão, tudo ficou silencioso.
+
+Mas os caracóis estavam vivos!
+
+Suas carapaças especiais tinham conseguido protegê-los!
+
+Lentamente, eles começaram a sair de suas conchas.
+
+Quando olharam ao redor, perceberam algo surpreendente!
+
+Não havia mais foguete!
+
+Não havia mais sala secreta!
+
+Não havia mais fábrica!
+
+Só havia terra, plantas e pedras!
+
+Tudo aquilo que os caracóis mais amavam!
+
+FIM DO CAPÍTULO 4.`
+          },
+          {
+            titulo: 'CAPÍTULO 5 — O GOLPE DE ESPERTEZA!',
+            texto: `Cena 1 — O sobrevivente
+
+Depois da gigantesca explosão, parecia que todos os humanos tinham desaparecido.
+
+Mas havia um sobrevivente!
+
+Era o humano do bem!
+
+Ele estava deitado no chão, muito machucado.
+
+Não conseguia se levantar!
+
+O humano pensava que aquele seria o seu fim.
+
+Mas os caracóis perceberam que ele ainda estava vivo!
+
+Cena 2 — O Golpe de Esperteza
+
+Os caracóis Zoki, Roky, Jokha e Yotho se aproximaram do humano do bem.
+
+Eles decidiram usar seu poder especial!
+
+O GOLPE DE ESPERTEZA!
+
+De repente, as carapaças dos caracóis começaram a ficar transparentes!
+
+Dentro de cada carapaça apareceu um cérebro com formato de cérebro humano!
+
+Os cérebros eram azuis e transparentes!
+
+Esse era o verdadeiro Golpe de Esperteza!
+
+Os quatro caracóis subiram no humano do bem e ativaram seus poderes!
+
+GOLPE DE ESPERTEZA ATIVADO!
+
+Uma energia azul começou a envolver o humano!
+
+Todos os seus machucados e cicatrizes começaram a desaparecer!
+
+O humano recuperou completamente suas forças!
+
+Ele conseguiu se levantar!
+
+Estava são e salvo!
+
+Cena 3 — Os caracóis de estimação
+
+O humano do bem ficou muito agradecido por ter sido salvo pelos caracóis!
+
+Afinal, eles tinham retribuído toda a ajuda que receberam durante a perseguição!
+
+Então, o humano decidiu acolher Zoki, Roky, Jokha e Yotho como seus animais de estimação!
+
+Ou melhor...
+
+SEUS CARACÓIS DE ESTIMAÇÃO! 🐌💙
+
+Agora, os quatro caracóis tinham um lar e um humano que cuidaria deles!
+
+E o humano do bem tinha quatro companheiros extremamente inteligentes!
+
+FIM DO CAPÍTULO 5.`
+          }
+        ]
+      },
+      {
+        id: 'filme-2',
+        titulo: 'OS CARACÓIS ESPERTOS 2',
+        capitulos: [
+          {
+            titulo: 'CAPÍTULO 1 — A INVASÃO DOS CAÇADORES',
+            texto: `O humano do bem estava passeando com seus quatro caracóis de estimação: Zoki, Roky, Jokha e Yotho.
+Eles estavam em uma região do Brasil que havia sido devastada pela grande explosão do primeiro filme. Não havia mais casas ou prédios por perto. Só existiam mato, pedras, terra e ruínas.
+Durante o passeio, encontraram um mapa mostrando a região destruída. Também descobriram que novos caçadores estavam vindo de outros países, incluindo Rússia, Estados Unidos e Canadá, para capturar os caracóis.
+Zoki: Ah, não, caracóis!
+Roky: Bora lutar!
+Dez minutos depois, os caçadores chegaram em grande quantidade. Eles carregavam equipamentos de captura, redes e armas que disparavam uma gosma muito mais resistente do que a anterior.
+Os caracóis avançaram e começaram a se defender usando suas carapaças. Alguns fizeram surgir espinhos nas carapaças e conseguiram afastar os caçadores.
+Mas eles tinham um poder especial: o golpe muscular!
+Com esse poder, os caracóis conseguiam transformar seus desejos em realidade.
+Yotho percebeu que precisavam escapar.
+Yotho: Quero várias camadas de barreiras de concreto, uma atrás da outra!
+Imediatamente, enormes paredes de concreto surgiram entre os caracóis e os caçadores.
+BOOOM! TUM! TUM!
+As barreiras bloquearam a passagem, dando tempo para todos fugirem.
+De repente, um avião de transporte apareceu em uma pista próxima. O piloto abriu a porta e chamou todos para embarcarem.
+Piloto: Entrem rapidamente! Vamos sair daqui!
+Os caracóis, o humano do bem e até os caçadores entraram no avião.
+Durante a viagem, ninguém brigou. Os antigos inimigos começaram a conversar com os caracóis e perceberam que não precisavam continuar aquela perseguição.
+Aos poucos, começaram a fazer amizade.`
+          },
+          {
+            titulo: 'CAPÍTULO 2 — A FUGA DE AVIÃO',
+            texto: `Cena 1 — A fúria de Zeta
+
+Enquanto isso, Zeta estava furioso!
+
+Zeta: Meu Deus! Cadê as pessoas que eu contratei para caçar os caracóis? Cadê?!
+
+Ele descobriu que seus caçadores haviam abandonado a missão e estavam viajando com os próprios caracóis.
+
+Zeta encontrou um pequeno avião abandonado em um aeródromo. O avião precisava de manutenção.
+
+Ele pegou sua caixa de ferramentas e tentou consertá-lo, mas precisou da ajuda de um mecânico para verificar o motor e os sistemas de segurança.
+
+Depois que o avião ficou pronto para voar, Zeta contratou um piloto e partiu atrás dos antigos caçadores.
+
+Cena 2 — O avião dos amigos
+
+Enquanto isso, os passageiros estavam tranquilos dentro do avião de transporte.
+
+Os antigos caçadores ainda vestiam seus trajes de captura, mas agora conversavam amigavelmente com o humano do bem.
+
+De repente, o piloto percebeu outro avião se aproximando da rota.
+
+Era o avião de Zeta!
+
+Zeta (pelo rádio): SEUS TRAIDORES! EU CONTRATEI VOCÊS PARA PEGAR OS CARACÓIS!
+
+Os passageiros ficaram assustados.
+
+Todo mundo: AAAAAH!
+
+O piloto do avião de transporte manteve uma distância segura e solicitou autorização para mudar de rota.
+
+Humano do bem: Piloto, precisamos sair daqui!
+
+Piloto: Entendido! Vou seguir uma rota segura até outro país!
+
+O avião mudou de direção e continuou sua viagem.
+
+Zeta tentou acompanhar, mas seu avião tinha menos autonomia de combustível. Seu piloto precisou fazer uma parada para abastecer.
+
+Com isso, Zeta perdeu o outro avião de vista.
+
+Zeta: O QUÊ?! CADÊ ELES?!`
+          },
+          {
+            titulo: 'CAPÍTULO 3 — O LUGAR DOS CARACÓIS GIGANTES',
+            texto: `Cena 1 — O lugar errado!
+
+Depois de fazer uma parada, Zeta continuou procurando os caracóis.
+
+Ele recebeu informações sobre um local onde supostamente o avião dos antigos caçadores havia pousado.
+
+Mas as informações estavam erradas!
+
+Zeta chegou a uma região isolada, onde encontrou caracóis selvagens gigantes, do tamanho de casas!
+
+Aqueles animais não eram caracóis comuns. Eram criaturas fantásticas daquele universo, com carapaças enormes, antenas compridas e dentes gigantescos.
+
+Zeta: O QUE É ISSO?!
+
+Assustado, ele correu em direção ao avião.
+
+Mas o piloto informou que havia uma falha mecânica e que não poderiam decolar naquele momento.
+
+Zeta correu até uma caverna próxima e se escondeu.
+
+Os caracóis selvagens passaram pela entrada da caverna sem encontrá-lo.
+
+Quando os animais se afastaram, Zeta voltou ao avião.
+
+Um mecânico conseguiu reparar a falha, e o avião decolou novamente.
+
+Só que o voo precisou continuar em velocidade reduzida, dentro dos limites seguros da aeronave.
+
+Zeta ficou impaciente.
+
+Zeta: DESSE JEITO VOU DEMORAR DEZ ANOS PARA CHEGAR!
+
+Piloto: Vamos chegar, senhor. Mas precisamos respeitar as condições do avião!
+
+Cena 2 — A nova amizade
+
+Enquanto isso, os caracóis e seus amigos estavam em outro país, em uma região tranquila, com bastante vegetação.
+
+Os antigos caçadores tinham deixado de ser inimigos. Agora brincavam com os caracóis, corriam pelos campos e compartilhavam momentos divertidos.
+
+Foi quando um caracol desconhecido apareceu.
+
+Yotho: Quem é você?
+
+Pherian: Meu nome é Pherian! Eu sou um caracol de dez a vinte centímetros. Minha carapaça é roxa, tem uma espiral, meu corpo é cinzento e eu sou do bem!
+
+Yotho, Zoki, Roky e Jokha: Ah, sim!
+
+De repente, ouviram o barulho de um avião se aproximando de uma pista da região.
+
+Yotho: Que avião é esse?
+
+Pherian: Eu acho que é do Zeta!
+
+Os caracóis perceberam que precisavam se preparar.
+
+Eles começaram a comer muitas folhas e usaram o golpe muscular para aumentar de tamanho!
+
+Pouco depois, os quatro estavam gigantescos, do tamanho de casas!
+
+Cena 3 — A chegada de Zeta
+
+Zeta desembarcou do avião e caminhou em direção ao campo.
+
+Quando viu os caracóis gigantes, ficou sem palavras.
+
+Zeta: Eh... Eh... 😅
+
+Os caracóis começaram a avançar na direção dele.
+
+Zeta saiu correndo!
+
+E, para piorar sua situação, os antigos caçadores também começaram a persegui-lo!
+
+Zeta: AAAAAH! POR QUE VOCÊS ESTÃO ATRÁS DE MIM?!
+
+O antigo contratante agora era o perseguido!`
+          },
+          {
+            titulo: 'CAPÍTULO 4 — A ARMADILHA NO HANGAR',
+            texto: `Cena 1 — A caverna
+
+Zeta entrou em uma caverna e pensou que os caracóis passariam direto.
+
+Mas os caracóis ativaram seu outro poder: o golpe de esperteza!
+
+Com ele, conseguiram usar um rastreador especial para descobrir onde Zeta estava escondido.
+
+Zeta: COMO VOCÊS ME ENCONTRARAM?!
+
+Ele correu até a outra saída da caverna e seguiu em direção ao aeródromo.
+
+Zeta entrou em um hangar onde seu avião estava estacionado e tentou fechar a porta.
+
+Mas um dos caracóis gigantes segurou a porta com a boca, permitindo que os outros entrassem!
+
+Cena 2 — A invasão do hangar
+
+Usando o golpe muscular, alguns caracóis diminuíram de tamanho e ficaram com trinta centímetros.
+
+Eles começaram a avançar contra Zeta, batendo suas carapaças nele!
+
+Zeta: SAIAM DAQUI!
+
+Zeta tentou ativar o alarme de emergência do hangar.
+
+Mas o sistema não funcionou!
+
+Sistema: Falha no alarme de emergência.
+
+Zeta: COMO ASSIM?!
+
+Ele tentou afastar os caracóis com socos e chutes, mas eles continuavam voltando!
+
+Então percebeu que havia uma porta de emergência.
+
+Só que estava trancada!
+
+Zeta: CADÊ A CHAVE?!
+
+Ele começou a procurar dentro de sua caixa de ferramentas.
+
+Depois de procurar bastante, finalmente encontrou.
+
+Zeta: ACHEI!
+
+Zeta destrancou a porta e saiu correndo.
+
+Cena 3 — Cercado pelos gigantes
+
+Do lado de fora, os caracóis gigantes estavam esperando.
+
+Zeta ficou encurralado.
+
+Um dos caracóis se aproximou e o engoliu inteiro, como acontecia com as criaturas fantásticas daquele universo!
+
+Zeta ficou preso dentro da pancinha do caracol, mas ainda estava vivo.
+
+Zeta: EI! ME TIRA DAQUI!`
+          },
+          {
+            titulo: 'CAPÍTULO 5 — A FUGA DEFINITIVA DE ZETA',
+            texto: `Cena 1 — A pancinha do caracol
+
+Zeta estava dentro da barriga do caracol gigante.
+
+Ele sentia muito nojo daquela situação e queria sair imediatamente!
+
+Zeta: ECAAAAA! EU QUERO SAIR DAQUI!
+
+Ele começou a bater, tentando chamar a atenção do animal.
+
+Até que o caracol o colocou para fora!
+
+Zeta caiu sobre a grama, são e salvo.
+
+Zeta: UFA! FINALMENTE!
+
+Mas os quatro caracóis ainda estavam por perto!
+
+Cena 2 — A prisão de concreto
+
+Yotho, Jokha, Roky e Zoki decidiram usar novamente o golpe muscular.
+
+Eles imaginaram várias barreiras de concreto ao redor de Zeta.
+
+TUM! TUM! TUM!
+
+As paredes apareceram, formando uma espécie de cercado!
+
+Zeta: AH, NÃO! DE NOVO?!
+
+Os caracóis fizeram surgir água dentro do cercado, formando uma piscina rasa.
+
+Depois, criaram vários peixinhos comuns e inofensivos.
+
+Os peixes começaram a nadar tranquilamente.
+
+Então os caracóis fizeram aparecer comida para os peixinhos ao redor de Zeta.
+
+Os animais se aproximaram rapidamente, disputando a comida e esbarrando nele.
+
+Zeta: EI! PAREM COM ISSO!
+
+Depois de algum esforço, Zeta conseguiu escalar uma parte mais baixa da barreira e sair do cercado.
+
+Cena 3 — A espada de graveto
+
+Zeta caiu na grama, mas ainda tinha forças.
+
+Ele pegou um graveto e começou a segurá-lo como se fosse uma espada.
+
+Zeta: AGORA VOCÊS VÃO VER!
+
+Os caracóis usaram o golpe muscular e desejaram que o graveto se quebrasse.
+
+CRAC!
+
+O graveto se partiu!
+
+Depois, fizeram o pedaço caído flutuar e bater em Zeta.
+
+TOC!
+
+Zeta: AI! MAS O QUÊ?!
+
+Zeta percebeu que não conseguiria vencer os caracóis e saiu correndo!
+
+Cena 4 — A fuga de Zeta
+
+Zeta correu até o aeródromo e entrou no avião, que já estava preparado para decolar.
+
+Zeta: PILOTO! VAMOS EMBORA DAQUI!
+
+O avião seguiu pela pista e decolou, levando Zeta para longe dos caracóis.
+
+Dessa vez, ele desistiu da perseguição.
+
+Enquanto isso, os quatro caracóis, Pherian, o humano do bem e os antigos caçadores voltaram a viver tranquilamente.
+
+Eles brincavam nos campos, corriam, descansavam e comiam vegetais.
+
+Os humanos que antes caçavam os caracóis agora eram seus amigos.
+
+NARRADOR: E foi assim que os caracóis espertos conseguiram escapar dos caçadores, viajar para outro país e conquistar novos amigos. Zeta fugiu, e todos puderam viver em paz!
+
+FIM DE OS CARACÓIS ESPERTOS 2! 🐌✈️`
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'serie-4',
+    nome: 'Série 4 — O Caracol Comilão',
+    filmes: [
+      {
+        id: 'filme-1',
+        titulo: 'O CARACOL COMILÃO — ZINGA',
+        capitulos: [
+          {
+            titulo: 'CAPÍTULO 1 — O CARACOL QUE COMIA TUDO',
+            texto: `Zinga era um caracol extremamente comilão. Ele comia absolutamente tudo o que via pela frente. E quando dizemos tudo, é literalmente TUDO!
+Ele comia casas, madeira, batatas, sapos, pedras, telhados, portas e qualquer outra coisa que aparecesse na frente dele.
+Um dia, Zinga encontrou um líquido de uma usina nuclear e resolveu experimentá-lo. Para sua surpresa, achou delicioso! Para ele, tinha gosto de hambúrguer com queijo e carne.
+Depois disso, Zinga começou a viajar para outros países somente para comer usinas nucleares. Ele comeu todas as usinas nucleares que encontrou!
+Os humanos começaram a falar mal dele. Alguns chegaram a chutá-lo e agredi-lo, mas não sabiam de uma coisa: Zinga tinha quatro guarda-costas! Eram caracóis gigantes que protegiam seu chefe. Quando alguém tentava machucá-lo ou desrespeitá-lo, os guardas reagiam e mordiam os responsáveis.
+Zinga continuou comendo pedras, casas, telhados e portas.
+Certo dia, ele viajou de avião para comer algumas nuvens. Ele abriu a janela do avião, saiu usando um paraquedas e foi em direção às nuvens. Zinga conseguia respirar até mesmo no espaço!
+Quando chegou às nuvens, começou a comê-las. Ele gostava muito delas porque tinham um sabor parecido com algodão-doce.
+Dizem que, quando você olha para o céu e não vê nenhuma nuvem, é porque Zinga passou por ali e comeu todas!
+Ele comia nuvens todos os dias.
+Um dia, Zinga resolveu experimentar uma folha, que é uma das comidas mais comuns dos caracóis. Porém, não gostou nem um pouco. Ele era diferente dos outros caracóis. Preferia pedras e usinas nucleares!
+Zinga continuou comendo cada vez mais coisas. Sua fome parecia não ter fim.
+Até que aconteceu algo inacreditável: Zinga comeu o México inteiro!
+O país desapareceu completamente do mapa. A ONU precisou atualizar os mapas mundiais e retirar o México deles, pois não havia mais território mexicano.
+No lugar onde antes existia o México, ficou apenas uma enorme extensão de água, que passou a ser chamada de Oceano do México.
+E assim continuou a vida de Zinga: sempre que sentia fome, comia absolutamente tudo o que via pela frente. Nada escapava de seu apetite!`
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'serie-5',
+    nome: 'Série 5 — Ziracoll',
+    filmes: [
+      {
+        id: 'filme-1',
+        titulo: 'ZIRACOLL – O CARACOL COLOSSAL',
+        capitulos: [
+          {
+            titulo: 'PARTE 1 — UMA DESCOBERTA INEXPLICÁVEL',
+            texto: `CENA 1 – UM DIA NORMAL
+
+É uma manhã tranquila. Pessoas estão trabalhando, crianças estão nas escolas e aviões atravessam o céu.
+Em um observatório astronômico, alguns cientistas trabalham normalmente.
+
+Cientista Marcos: Você viu os dados que chegaram ontem?
+Cientista Helena: Ainda não. O que aconteceu?
+Marcos: Encontramos um objeto muito grande atravessando uma região distante do Sistema Solar.
+Helena: Um asteroide?
+Marcos: Não sabemos. Mas o tamanho dele é impressionante.
+Helena: Mostre a imagem.
+
+Marcos abre uma tela e apresenta os registros.
+
+Helena: Espera... Isso não parece um asteroide.
+Marcos: Também acho.
+
+Os dois começam a analisar os dados.
+
+CENA 2 – O OBJETO
+
+Algumas horas depois, uma equipe internacional de cientistas recebe os mesmos dados.
+Um especialista aumenta a imagem.
+
+Especialista: Isso é impossível.
+Diretor: O que foi?
+Especialista: Estamos observando uma estrutura que possui características biológicas.
+Diretor: Biológicas?
+Especialista: Sim. Parece ser um organismo vivo.
+Diretor: Qual é o tamanho?
+Especialista: Ainda estamos calculando.
+
+A equipe continua trabalhando durante várias horas.
+Finalmente, o resultado aparece.
+
+Especialista: Aproximadamente metade do diâmetro da Terra.
+
+Todos ficam em silêncio.
+
+Diretor: O que exatamente estamos observando?
+Especialista: Não tenho certeza.
+
+CENA 3 – A IDENTIFICAÇÃO
+
+No dia seguinte, novas imagens são divulgadas.
+Os cientistas conseguem identificar a cabeça, os tentáculos oculares e uma enorme carapaça.
+
+Helena: Marcos... Olhe isso.
+Marcos: Não acredito.
+Helena: É um caracol.
+Marcos: Um caracol desse tamanho?
+Helena: Parece que sim.
+
+A descoberta é anunciada mundialmente.
+
+Apresentador: Cientistas confirmaram a existência de um organismo colossal no espaço. As imagens mostram características semelhantes às de um caracol terrestre, mas em uma escala nunca imaginada.
+
+O mundo inteiro começa a discutir a descoberta.`
+          },
+          {
+            titulo: 'PARTE 2 — ZIRACOLL',
+            texto: `CENA 4 – A PRIMEIRA OBSERVAÇÃO COMPLETA
+
+Uma equipe de pesquisadores reúne todas as imagens disponíveis.
+O organismo apresenta uma enorme carapaça, tentáculos oculares e uma cabeça gigantesca.
+
+Marcos: Precisamos dar um nome a ele.
+Helena: Alguma sugestão?
+Marcos: Ziracoll.
+Helena: Ziracoll?
+Marcos: Sim. Ziracoll, o caracol colossal.
+
+O nome começa a ser utilizado pelos pesquisadores e posteriormente pela imprensa.
+
+CENA 5 – O COMPORTAMENTO
+
+Os cientistas observam Ziracoll durante vários dias.
+
+Helena: Ele está se movimentando.
+Marcos: Muito lentamente.
+Helena: Mas está mudando de direção.
+Marcos: Parece estar seguindo uma trajetória em direção à Terra.
+Helena: Será que ele sabe que estamos aqui?
+Marcos: Não temos como saber.
+
+Uma nova observação mostra Ziracoll abrindo a boca enquanto se aproxima de um pequeno corpo celeste.
+O objeto desaparece parcialmente da imagem.
+
+Helena: Ele está comendo!
+Marcos: O quê?
+Helena: O corpo celeste. Ele está consumindo o material.
+Marcos: Precisamos avisar os governos imediatamente.
+
+CENA 6 – A REUNIÃO INTERNACIONAL
+
+Representantes de diversos países participam de uma reunião de emergência.
+
+Presidente: Temos uma criatura que pode comprometer a existência do nosso planeta.
+General: Nossas forças militares podem tentar impedir sua aproximação.
+Cientista Marcos: Precisamos entender primeiro o que estamos enfrentando.
+Presidente: Quanto tempo temos?
+Marcos: Não podemos determinar com precisão. Mas a trajetória indica que ele continuará se aproximando.
+General: Então precisamos começar a preparação militar.
+Presidente: E a população?
+Marcos: Precisamos preparar também um plano de evacuação.`
+          },
+          {
+            titulo: 'PARTE 3 — A APROXIMAÇÃO',
+            texto: `CENA 7 – O PRIMEIRO ALERTA
+
+Algumas semanas passam.
+Os observatórios confirmam que Ziracoll está cada vez mais próximo.
+Em várias cidades, os governos começam a distribuir comunicados.
+
+Apresentador: Autoridades internacionais recomendam que a população acompanhe as orientações oficiais. Uma operação de emergência está sendo preparada.
+
+As pessoas começam a comprar suprimentos, organizar documentos e acompanhar as notícias.
+
+CENA 8 – A OPERAÇÃO MILITAR
+
+Em uma grande base militar, soldados preparam veículos.
+Tanques são transportados para regiões estratégicas.
+Aeronaves militares começam a realizar patrulhas.
+
+General: Precisamos manter as equipes organizadas.
+Soldado: Os veículos estão preparados.
+General: E os sistemas de comunicação?
+Soldado: Funcionando normalmente.
+General: Muito bem.
+
+CENA 9 – O PRIMEIRO CONTATO COM A TERRA
+
+Ziracoll finalmente alcança a região próxima ao planeta.
+Os satélites registram sua aproximação.
+
+Marcos: Ele chegou.
+Helena: Não acredito que isso está acontecendo.
+Marcos: Precisamos acompanhar cada movimento.
+
+Ziracoll aproxima sua enorme cabeça da Terra.
+A criatura começa a consumir material da superfície terrestre.
+Em vários observatórios, os pesquisadores acompanham o acontecimento.
+
+Helena: Ele está realmente comendo o nosso planeta.
+Marcos: Precisamos descobrir se existe alguma maneira de fazê-lo mudar de direção.
+
+CENA 10 – A RESPOSTA MILITAR
+
+Os governos autorizam uma operação de defesa.
+Tanques e aeronaves são posicionados.
+
+General: Todas as unidades, mantenham contato com o centro de comando.
+Soldado: Entendido.
+
+A operação começa.
+Os militares tentam atingir regiões externas da criatura.
+Depois de algum tempo, os relatórios chegam.
+
+Soldado: Senhor, os resultados não foram suficientes.
+General: Continue monitorando.
+Soldado: A criatura continua avançando.
+
+O general observa uma enorme tela.
+
+General: Estamos lidando com algo completamente diferente de qualquer ameaça que já enfrentamos.`
+          },
+          {
+            titulo: 'PARTE 4 — A DESCOBERTA CIENTÍFICA',
+            texto: `CENA 11 – UMA POSSIBILIDADE
+
+No laboratório, Marcos e Helena analisam amostras de dados obtidas pelos satélites.
+
+Marcos: Veja esta região.
+Helena: O que tem nela?
+Marcos: A estrutura da carapaça parece possuir várias camadas.
+Helena: E isso significa o quê?
+Marcos: Que provavelmente estamos diante de um organismo extremamente adaptado ao ambiente espacial.
+Helena: Então ele consegue sobreviver fora de um planeta?
+Marcos: Aparentemente, sim.
+Helena: Mas como?
+Marcos: Ainda não sabemos.
+
+CENA 12 – O MISTÉRIO DA ALIMENTAÇÃO
+
+Os pesquisadores percebem que Ziracoll não consome apenas rochas.
+Ele também parece consumir materiais presentes na superfície dos planetas.
+
+Marcos: Existe alguma coisa que ele procura.
+Helena: Como você sabe?
+Marcos: Observe o comportamento dele. Ele não está se movimentando aleatoriamente.
+Helena: Você acha que está procurando alimento?
+Marcos: É a hipótese mais provável.
+Helena: Então a Terra é apenas mais um planeta no caminho dele?
+Marcos: Talvez.
+
+CENA 13 – A ORIGEM
+
+Os cientistas começam a estudar a possibilidade de Ziracoll ter surgido em outro sistema estelar.
+Um pesquisador apresenta uma hipótese.
+
+Pesquisador: Talvez existam outros organismos semelhantes espalhados pelo universo.
+Helena: Outros caracóis desse tamanho?
+Pesquisador: Não sabemos. Mas a existência de Ziracoll mostra que precisamos reconsiderar muitas coisas sobre a vida no universo.
+Marcos: Se ele veio de outro sistema, precisamos descobrir de onde.
+
+A equipe começa a analisar sua trajetória.`
+          },
+          {
+            titulo: 'PARTE 5 — A TERRA EM CRISE',
+            texto: `CENA 14 – AS CIDADES
+
+O avanço de Ziracoll provoca uma crise mundial.
+Transportes ficam lotados, aeroportos recebem milhares de pessoas e os governos organizam centros de acolhimento.
+Em uma cidade, uma família acompanha as notícias.
+
+Lucas: Pai, a gente vai sair daqui?
+Roberto: Sim. Vamos seguir as orientações e encontrar um lugar seguro.
+Lucas: E a nossa casa?
+Roberto: Não sei, filho. Mas precisamos pensar no futuro.
+
+CENA 15 – O PLANO PLANETÁRIO
+
+Em uma reunião internacional, surge uma nova proposta.
+
+Presidente: Precisamos encontrar outro planeta habitável.
+Cientista Marcos: Já estamos investigando alguns candidatos.
+Presidente: Algum resultado?
+Marcos: Sim. Encontramos um planeta com atmosfera, água líquida e características que podem permitir a vida humana.
+General: Podemos chegar até ele?
+Marcos: Com uma missão espacial internacional e naves de transporte, existe essa possibilidade.
+Presidente: Então vamos iniciar o projeto.
+
+CENA 16 – PROJETO NOVO LAR
+
+O projeto recebe o nome de NOVO LAR.
+Países começam a trabalhar juntos na construção e preparação de naves espaciais.
+Engenheiros trabalham em enormes instalações.
+Cientistas verificam os sistemas de suporte de vida.
+Pilotos treinam para realizar viagens de longa distância.
+A missão recebe uma prioridade mundial.
+
+Narrador: Pela primeira vez na história, diferentes países estavam trabalhando em um único objetivo: garantir a continuidade da humanidade fora da Terra.`
+          },
+          {
+            titulo: 'PARTE 6 — A GRANDE EVACUAÇÃO',
+            texto: `CENA 17 – A PRIMEIRA FROTA
+
+As primeiras naves ficam prontas.
+
+Piloto: Todos os sistemas funcionando.
+Copiloto: Combustível verificado.
+Controlador: Autorização de lançamento concedida.
+Piloto: Iniciando decolagem.
+
+As naves deixam a superfície terrestre.
+Uma multidão acompanha o lançamento pelas transmissões.
+
+CENA 18 – O DESPEDIR
+
+Lucas e sua família embarcam em uma das naves.
+
+Lucas: Pai, você acha que vamos encontrar animais naquele planeta?
+Roberto: Talvez. Precisaremos estudar o lugar primeiro.
+Lucas: E será que vai ter árvores?
+Roberto: Espero que sim.
+
+A mãe de Lucas olha pela janela.
+
+Mãe: É difícil acreditar que estamos deixando tudo isso para trás.
+Roberto: Eu sei.
+
+As portas da nave se fecham.
+
+CENA 19 – A TERRA VISTA DO ESPAÇO
+
+A nave começa a se afastar.
+Lucas observa o planeta pela janela.
+
+Lucas: Olha, pai!
+Roberto: É a nossa casa.
+Lucas: Ela parece tão pequena daqui.
+Roberto: Mesmo assim, é o lugar onde vivemos.
+
+A família permanece observando o planeta.`
+          },
+          {
+            titulo: 'PARTE 7 — O MEIO DA GRANDE CRISE',
+            texto: `CENA 20 – UMA FALHA INESPERADA
+
+A frota de evacuação já está em viagem quando um problema aparece.
+
+Controlador: Atenção, nave principal. Estamos recebendo uma comunicação de emergência.
+Piloto: Qual é o problema?
+Controlador: Uma das naves está apresentando falhas no sistema de navegação.
+Piloto: Precisamos verificar imediatamente.
+
+Os engenheiros começam a investigar.
+
+Engenheira: O sistema principal está funcionando, mas o computador de navegação perdeu parte dos dados.
+Piloto: Conseguimos recuperar?
+Engenheira: Estamos tentando.
+
+CENA 21 – UMA DECISÃO DIFÍCIL
+
+O comandante da frota recebe uma comunicação.
+
+Comandante: Não podemos abandonar a nave com passageiros.
+Piloto: Então precisamos organizar uma operação de assistência.
+Comandante: Exatamente. Todas as naves próximas devem colaborar.
+
+A frota reorganiza sua formação.
+Depois de várias horas, os engenheiros conseguem recuperar a navegação.
+
+Engenheira: Conseguimos!
+Piloto: Excelente trabalho.
+
+CENA 22 – O PLANETA DESCONHECIDO
+
+Enquanto isso, a equipe científica continua analisando o planeta de destino.
+Helena participa de uma transmissão com a frota.
+
+Helena: Encontramos regiões com vegetação e grandes oceanos.
+Marcos: E a atmosfera?
+Helena: Os dados são promissores. Mas precisamos realizar testes adicionais antes de liberar a ocupação.
+Marcos: Entendido.
+
+Lucas escuta a transmissão.
+
+Lucas: Então tem plantas naquele planeta!
+Roberto: Parece que sim.
+
+CENA 23 – A SITUAÇÃO DA TERRA PIORA
+
+Uma estação de observação transmite novas imagens.
+Ziracoll continua consumindo partes da Terra.
+
+Cientista: A situação está piorando.
+General: Quanto resta do planeta?
+Cientista: Não temos uma estimativa definitiva. Mas a perda de material terrestre está aumentando.
+General: E as forças militares?
+Cientista: Não conseguiram alterar significativamente o comportamento da criatura.
+
+O general fica em silêncio.`
+          },
+          {
+            titulo: 'PARTE 8 — O PLANETA HABITÁVEL',
+            texto: `CENA 24 – A CHEGADA
+
+Depois de uma longa viagem, a frota finalmente alcança o destino.
+
+Piloto: Atenção, passageiros. Estamos chegando ao planeta.
+Lucas: É aquele?
+Roberto: Sim. Estamos chegando.
+
+Pela janela, aparece um enorme planeta azul e verde.
+Oceano, continentes e nuvens podem ser vistos do espaço.
+
+Controlador: Iniciando análise atmosférica.
+Cientista: Os primeiros resultados são positivos.
+Controlador: Autorização para pouso concedida.
+
+CENA 25 – O PRIMEIRO POUSO
+
+A primeira nave pousa em uma grande planície.
+As portas se abrem.
+Os passageiros descem cuidadosamente.
+
+Lucas: É muito bonito!
+Roberto: É mesmo.
+
+Uma equipe científica começa a analisar o ambiente.
+
+Pesquisadora: Temperatura adequada. Atmosfera dentro dos parâmetros previstos.
+Marcos, acompanhando por transmissão: Conseguimos chegar.
+Helena: Agora precisamos construir uma nova estrutura para a humanidade.
+
+CENA 26 – A NOVA COLÔNIA
+
+Os trabalhos começam.
+São construídas instalações de energia, hospitais, centros de pesquisa, moradias e áreas agrícolas.
+Os cientistas estudam as plantas locais.
+As famílias começam a se organizar.
+
+Lucas observa uma pequena planta crescendo perto de uma construção.
+
+Lucas: Pai, olha! Uma planta!
+Roberto: Parece que nossa nova vida está começando.`
+          },
+          {
+            titulo: 'PARTE 9 — A ÚLTIMA OBSERVAÇÃO',
+            texto: `CENA 27 – O ÚLTIMO RELATÓRIO
+
+Na estação de observação, Marcos e Helena recebem uma transmissão.
+
+Marcos: Temos imagens novas de Ziracoll.
+Helena: Mostre.
+
+A imagem aparece na tela.
+A criatura continua viva e ainda está próxima da Terra.
+
+Marcos: Ele não parece estar diminuindo a velocidade.
+Helena: Então continuará consumindo o que restou?
+Marcos: Provavelmente.
+Helena: É difícil acreditar que tudo isso começou com uma observação astronômica.
+Marcos: E agora estamos em outro planeta.
+
+CENA 28 – UMA NOVA MENSAGEM
+
+Uma equipe científica detecta uma mudança no comportamento de Ziracoll.
+
+Pesquisador: Doutor Marcos, encontramos algo.
+Marcos: O quê?
+Pesquisador: Ele está mudando de direção.
+Marcos: Para onde?
+Pesquisador: Ainda não sabemos.
+
+Marcos observa os dados.
+
+Marcos: Talvez esteja procurando outro lugar para se alimentar.
+Helena: Então ele pode continuar viajando pelo universo.
+Marcos: Sim.`
+          },
+          {
+            titulo: 'PARTE 10 — UM NOVO COMEÇO',
+            texto: `CENA 29 – A NOVA CASA
+
+Alguns meses se passam.
+A colônia humana está crescendo.
+Novas construções aparecem, plantações são iniciadas e os cientistas continuam estudando o planeta.
+Lucas está sentado perto de uma janela observando o horizonte.
+
+Roberto: No que está pensando?
+Lucas: Na Terra.
+Roberto: Também sinto falta dela.
+Lucas: Será que algum dia vamos voltar?
+Roberto: Não sei, filho. Mas nunca vamos esquecer de onde viemos.
+
+A câmera mostra o planeta habitável.
+
+CENA 30 – A ÚLTIMA TRANSMISSÃO
+
+Marcos realiza uma transmissão para a colônia.
+
+Marcos: Atenção a todos. A humanidade conseguiu estabelecer uma nova comunidade fora da Terra. Continuaremos estudando Ziracoll e procurando respostas sobre sua origem.
+Helena: Ainda existem muitas perguntas sem resposta.
+Marcos: Mas hoje temos algo importante: um novo começo.
+
+A transmissão termina.
+
+CENA 31 – O FINAL
+
+A câmera mostra o novo planeta, suas montanhas, oceanos e florestas.
+Em seguida, a imagem muda para o espaço.
+Ziracoll aparece ao longe, com sua enorme carapaça ocupando uma parte gigantesca da imagem.
+A criatura continua sua jornada pelo universo.
+
+Narrador:
+"Durante milhares de anos, a humanidade acreditou que conhecia seu lugar no universo. Mas bastou encontrar uma criatura colossal para descobrir o quanto ainda havia para aprender. A Terra foi o começo de nossa história. E, mesmo depois de perdê-la, a humanidade encontrou uma maneira de continuar."
+
+A câmera se afasta lentamente.
+
+TELA PRETA.
+
+FIM
+
+ZIRACOLL – O CARACOL COLOSSAL`
+          }
+        ]
+      }
+    ]
+  }
+];
+
+/* ================= ESTADO DA ABA SÉRIES ================= */
+var seriesState = {
+  view: 'series',
+  serieId: null,
+  filmeId: null,
+  capituloIndex: 0
+};
+
+var seriesView = document.getElementById('seriesView');
+
+function getSerie(id) {
+  for (var i = 0; i < seriesData.length; i++) {
+    if (seriesData[i].id === id) return seriesData[i];
+  }
+  return null;
+}
+function getFilme(serie, id) {
+  if (!serie) return null;
+  for (var i = 0; i < serie.filmes.length; i++) {
+    if (serie.filmes[i].id === id) return serie.filmes[i];
+  }
+  return null;
+}
+
+function renderSeries() {
+  var html = '';
+
+  if (seriesState.view === 'series') {
+    html += '<h2 class="serie-section-title">Séries</h2>';
+    html += '<p class="serie-section-sub">Escolha uma série para ver os filmes e capítulos.</p>';
+    html += '<div class="series-list">';
+    for (var i = 0; i < seriesData.length; i++) {
+      var s = seriesData[i];
+      var totalFilmes = s.filmes.length;
+      var totalCaps = 0;
+      for (var f = 0; f < s.filmes.length; f++) totalCaps += s.filmes[f].capitulos.length;
+      html += '<div class="series-item" data-serie="' + s.id + '">'
+        + '<div class="si-icon">📚</div>'
+        + '<div class="si-info">'
+        + '<div class="si-title">' + escapeHtml(s.nome) + '</div>'
+        + '<div class="si-sub">' + totalFilmes + ' filme(s) · ' + totalCaps + ' capítulo(s)</div>'
+        + '</div>'
+        + '<div class="si-arrow">›</div>'
+        + '</div>';
+    }
+    html += '</div>';
+  }
+
+  else if (seriesState.view === 'filmes') {
+    var serie = getSerie(seriesState.serieId);
+    if (!serie) { seriesState.view = 'series'; renderSeries(); return; }
+    html += '<button class="series-back-btn" id="backToSeries">← Voltar às séries</button>';
+    html += '<h2 class="serie-section-title">' + escapeHtml(serie.nome) + '</h2>';
+    html += '<p class="serie-section-sub">Escolha um filme.</p>';
+    html += '<div class="series-list">';
+    for (var j = 0; j < serie.filmes.length; j++) {
+      var fm = serie.filmes[j];
+      html += '<div class="series-item" data-filme="' + fm.id + '">'
+        + '<div class="si-icon">🎬</div>'
+        + '<div class="si-info">'
+        + '<div class="si-title">' + escapeHtml(fm.titulo) + '</div>'
+        + '<div class="si-sub">' + fm.capitulos.length + ' capítulo(s)</div>'
+        + '</div>'
+        + '<div class="si-arrow">›</div>'
+        + '</div>';
+    }
+    html += '</div>';
+  }
+
+  else if (seriesState.view === 'capitulos') {
+    var serie2 = getSerie(seriesState.serieId);
+    var filme2 = getFilme(serie2, seriesState.filmeId);
+    if (!serie2 || !filme2) { seriesState.view = 'series'; renderSeries(); return; }
+    html += '<button class="series-back-btn" id="backToFilmes">← Voltar aos filmes</button>';
+    html += '<h2 class="serie-section-title">' + escapeHtml(filme2.titulo) + '</h2>';
+    html += '<p class="serie-section-sub">' + escapeHtml(serie2.nome) + ' · ' + filme2.capitulos.length + ' capítulo(s)</p>';
+    html += '<div class="chapter-list">';
+    for (var c = 0; c < filme2.capitulos.length; c++) {
+      html += '<div class="chapter-item" data-cap="' + c + '">'
+        + '<div class="ci-num">' + (c + 1) + '</div>'
+        + '<div class="ci-title">' + escapeHtml(filme2.capitulos[c].titulo) + '</div>'
+        + '<div class="si-arrow">›</div>'
+        + '</div>';
+    }
+    html += '</div>';
+  }
+
+  else if (seriesState.view === 'leitor') {
+    var serie3 = getSerie(seriesState.serieId);
+    var filme3 = getFilme(serie3, seriesState.filmeId);
+    if (!serie3 || !filme3) { seriesState.view = 'series'; renderSeries(); return; }
+    var idx = seriesState.capituloIndex;
+    if (idx < 0) idx = 0;
+    if (idx >= filme3.capitulos.length) idx = filme3.capitulos.length - 1;
+    var cap = filme3.capitulos[idx];
+    var total = filme3.capitulos.length;
+
+    html += '<button class="series-back-btn" id="backToCapitulos">← Voltar aos capítulos</button>';
+    html += '<div class="chapter-reader">';
+    html += '<div class="cr-header">';
+    html += '<div class="cr-serie">' + escapeHtml(serie3.nome) + ' · ' + escapeHtml(filme3.titulo) + '</div>';
+    html += '<div class="cr-title">' + escapeHtml(cap.titulo) + '</div>';
+    html += '</div>';
+    html += '<div class="cr-body">' + formatChapterText(cap.texto) + '</div>';
+    html += '<div class="chapter-nav">';
+    html += '<button id="prevCap"' + (idx === 0 ? ' disabled' : '') + '>◀ Capítulo anterior</button>';
+    html += '<button id="nextCap" class="primary"' + (idx === total - 1 ? ' disabled' : '') + '>Próximo capítulo ▶</button>';
+    html += '</div>';
+    html += '<div class="cr-progress">Capítulo ' + (idx + 1) + ' de ' + total + '</div>';
+    html += '</div>';
+  }
+
+  seriesView.innerHTML = html;
+
+  /* Listeners */
+  if (seriesState.view === 'series') {
+    var items = seriesView.querySelectorAll('.series-item');
+    for (var k = 0; k < items.length; k++) {
+      items[k].onclick = (function(el){
+        return function() {
+          seriesState.serieId = el.getAttribute('data-serie');
+          seriesState.view = 'filmes';
+          renderSeries();
+        };
+      })(items[k]);
+    }
+  }
+  else if (seriesState.view === 'filmes') {
+    var backBtn = document.getElementById('backToSeries');
+    if (backBtn) backBtn.onclick = function() { seriesState.view = 'series'; renderSeries(); };
+    var fitems = seriesView.querySelectorAll('.series-item');
+    for (var m = 0; m < fitems.length; m++) {
+      fitems[m].onclick = (function(el){
+        return function() {
+          seriesState.filmeId = el.getAttribute('data-filme');
+          seriesState.view = 'capitulos';
+          renderSeries();
+        };
+      })(fitems[m]);
+    }
+  }
+  else if (seriesState.view === 'capitulos') {
+    var backF = document.getElementById('backToFilmes');
+    if (backF) backF.onclick = function() { seriesState.view = 'filmes'; renderSeries(); };
+    var citems = seriesView.querySelectorAll('.chapter-item');
+    for (var n = 0; n < citems.length; n++) {
+      citems[n].onclick = (function(el){
+        return function() {
+          seriesState.capituloIndex = parseInt(el.getAttribute('data-cap'), 10);
+          seriesState.view = 'leitor';
+          renderSeries();
+          window.scrollTo(0, 0);
+        };
+      })(citems[n]);
+    }
+  }
+  else if (seriesState.view === 'leitor') {
+    var backC = document.getElementById('backToCapitulos');
+    if (backC) backC.onclick = function() { seriesState.view = 'capitulos'; renderSeries(); };
+    var prev = document.getElementById('prevCap');
+    var next = document.getElementById('nextCap');
+    if (prev) prev.onclick = function() {
+      if (seriesState.capituloIndex > 0) {
+        seriesState.capituloIndex--;
+        renderSeries();
+        window.scrollTo(0, 0);
+      }
+    };
+    if (next) next.onclick = function() {
+      var s = getSerie(seriesState.serieId);
+      var f = getFilme(s, seriesState.filmeId);
+      if (seriesState.capituloIndex < f.capitulos.length - 1) {
+        seriesState.capituloIndex++;
+        renderSeries();
+        window.scrollTo(0, 0);
+      }
+    };
+  }
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/* Formata o texto do capítulo: linhas em branco viram espaçamento,
+   linhas "TÍTULOS EM MAIÚSCULAS" viram <h4>, o resto vira parágrafo. */
+function formatChapterText(texto) {
+  var linhas = texto.split('\n');
+  var out = '';
+  var paragBuf = [];
+
+  function flushParag() {
+    if (paragBuf.length) {
+      out += '<p>' + escapeHtml(paragBuf.join('\n')) + '</p>';
+      paragBuf = [];
+    }
+  }
+
+  for (var i = 0; i < linhas.length; i++) {
+    var linha = linhas[i];
+    var trimmed = linha.trim();
+
+    if (trimmed === '') {
+      flushParag();
+      continue;
+    }
+
+    var isTitle = /^[A-ZÁÀÂÃÉÊÍÓÔÕÚÇ0-9\s\-—–:!?,.]+$/.test(trimmed)
+                  && trimmed.length <= 60
+                  && trimmed === trimmed.toUpperCase()
+                  && /[A-ZÁÀÂÃÉÊÍÓÔÕÚÇ]/.test(trimmed);
+
+    if (isTitle) {
+      flushParag();
+      out += '<h4>' + escapeHtml(trimmed) + '</h4>';
+    } else {
+      paragBuf.push(linha);
+    }
+  }
+  flushParag();
+  return out;
+}
 
 /* ================= PERSISTÊNCIA ================= */
 var STORAGE_KEY = 'caracolandia_user';
@@ -720,7 +3357,7 @@ function buildPhotoGrid(containerId, selectedUrl, onSelect) {
   });
 }
 
-/* ================= LOGIN: FOTO DE PERFIL ================= */
+/* ================= LOGIN ================= */
 var btnAvatarLogin = document.getElementById('btnAvatarLogin');
 var panelLogin = document.getElementById('panelLogin');
 var avatarPreviewLogin = document.getElementById('avatarPreviewLogin');
@@ -740,7 +3377,6 @@ btnAvatarLogin.onclick = function() {
   }
 };
 
-/* ================= BOTÃO ENTRAR ================= */
 document.getElementById('btnEnter').onclick = function() {
   var name = document.getElementById('inputName').value.trim();
   var pass = document.getElementById('inputPass').value.trim();
@@ -780,6 +3416,9 @@ function showApp() {
   document.getElementById('login').classList.remove('active');
   document.getElementById('editScreen').classList.remove('active');
   document.getElementById('app').classList.add('active');
+
+  seriesState.view = 'series';
+  renderSeries();
 }
 
 /* ================= EDIÇÃO DE CONTA ================= */
@@ -856,6 +3495,10 @@ for (var i = 0; i < tabBtns.length; i++) {
     for (var k = 0; k < allContents.length; k++) allContents[k].classList.remove('active');
     this.classList.add('active');
     document.getElementById('tab-' + this.getAttribute('data-tab')).classList.add('active');
+
+    if (this.getAttribute('data-tab') === 'series') {
+      renderSeries();
+    }
   };
 }
 
